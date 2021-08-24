@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+<div style="text-align: justify">
+
 <center> <h2> Introducción </h2> </center>
 
 
@@ -20,8 +22,74 @@ El auge de la compra y venta  de los carros de segunda, es decir carros usados o
 
 A partir del impacto que se ha destacado en la sociedad que es comprar y vender carros de segunda nace la motivación de plantear un modelo que estudie los precios de los carros través de los años, es decir cual es el precio promedio de una referencia de carro de un año determinado comparado con los demás años (Ej: cuánto aumenta el precio de un carro por ser modelo 2014 comparado con el del año anterior 2013), pero dado que los precios de carros pueden variar mucho de una marca a otra se toma la decisión de concentrarse en un marca en particular de automóvil que es el mazda3, el cual es un carro de gama media muy comercial, además de ser un carro que al público en general le atrae por las buenas características que este posee, por otro lado, el mazda 3 lleva muchos años en el mercado y sigue siendo un carro que actualmente sigue actualizando sus modelos.
 
-Para realizar este estudio se decide utilizar técnicas basadas en la estadística Bayesiana, la cual aparte de necesitar una muestra de los precios de carros, realiza la construcción de una distribución a priori de los precios de los carros basados en el conocimiento que tiene un experto en el área tienen frente a este tema que se quiere estudiar.
+Para realizar este estudio se decide utilizar técnicas basadas en la estadística Bayesiana, la cual aparte de necesitar una muestra de los precios de carros, realiza la construcción de una distribución a priori de los precios de los carros basados en el conocimiento que tiene un experto en el área frente a este tema que se quiere estudiar.
 
 
 
+## Marco teórico
+
+
+**¿Por qué se eligió el Mazda 3 para el estudio?**
+
+El Mazda 3 es sin lugar a dudas uno de los autos más populares de la marca nipona (Japón). Su diseño, versatilidad, rendimiento y tecnología, lo han convertido en uno de los vehículos favoritos de los conductores. Por estas razones no es sorprendente que muchos conductores busquen a diario en Internet opciones de Mazda 3 usados que puedan adquirir a un precio asequible.
+
+El Mazda 3 de segunda generación que comprende los modelos 2008 a 2012, es uno de los ejemplos de autos usados que puede ser una excelente opción de compra, pese a tener poco más de una década encima, no significa que sea un auto viejo, o peor aún, que no posea un buen rendimiento, aunque claro, eso también dependerá del uso que le haya dado cada dueño.
+ 
+Es por todos esos atributos que esta generación del Mazda3 es considerada como una de las mejores ofertas disponibles hoy en día en el mercado de los autos usados o seminuevos, además de aportar la confiabilidad y durabilidad que caracteriza a los productos de Mazda.
+Ya que el Mazda 3 es un modelo muy comercial, el cual ha ganado varios premios lo convierte en un carro fácil de reconocer y encontrar en el mercado, sus precios son accesibles y presenta un diseño atractivo, por esas razones se decide estudiar el precio promedio de este vehículo, por otro lado, el experto confirma que posee conocimiento en este carro y es de su agrado.
+ 
+**Lemas dados por la empresa MAZDA:** “El potencial humano y las cosas increíbles que hacen las personas son la fuente de nuestra inspiración, por eso hacemos parte de la grandeza en su camino con un vehículo capaz de encender sus sentidos, con un diseño mundialmente galardonado y creado para darles una experiencia de conducción en perfecta armonía.”
+
+AVANZA CON TU GRANDEZA
+“Avanzar: esa es la palabra que le da vida a nuestro propósito de impulsar la grandeza humana kilómetro a kilómetro con tal dedicación que la tecnología, el diseño y la ingeniería se armonizan a la perfección para respaldar tu camino.”
+
+
+<h3> <center> Especificaciones técnicas del carro </center> </h3 
+
+**Contextualización del mazda 3**
+
+<center>
+![](Imagenes_carros/)
+</center>
+
+
+<h3> <center> Constructor y distribuidores </center> </h3 
+
+<h3> <center> Tipo de usuarios de este vehículo </center> </h3 
+
+
+
+
+**¿Por qué hacemos uso de la estadística Bayesiana para estudiar los precios de los distintos modelos de un mazda 3?**
+
+Una de las principales limitaciones de la estadística clásica o frecuentista es que no permite incorporar de manera coherente en el análisis estadístico la información extra-muestral o información previa que provenga de expertos en el área disponible, ya que se apoya únicamente en datos muestrales observados y en muchas casos esta información adicional puede ser de mucha utilidad, ya que viene directamente de personas que tienen una experiencia y experticia en el tema, la cual puede tener una perspectiva más acertada del fenómeno que se está estudiando.
+
+
+En la práctica, a menudo la incertidumbre o el desconocimiento sobre el tema de interés hace que la toma de decisiones sea en la mayoría de los casos muy compleja, por lo cual es común que las decisiones se apoyan en expertos que proporcionan información en forma de estimaciones de probabilidad con respecto a dichas incertidumbres. Las distribuciones de probabilidad son una de las representaciones más usadas de la incertidumbre que se tiene acerca de un tema de interés. Dichas distribuciones no son más que expresiones formales de lo que piensa o sabe un experto, por lo tanto, no es adecuado juzgarlas como buenas o malas. La transformación mental de conocimiento subjetivo en una distribución de probabilidad es una tarea difícil (van Lenthe, 1993) y se deben tener en cuenta algunas técnicas para la captura de la información, teniendo siempre en mente que es un proceso extremadamente delicado; En este caso puntual vamos a hacer uso de las técnicas popularmente utilizadas en la estadística Bayesiana llamadas elicitaciones (distribuciones no informativas).
+
+El proceso de elicitación debe enfrentar un protocolo cuidadoso y profesional que le permita al analista documentar el proceso. En general, dicho protocolo no difiere mucho de los principios estándares de recolección de datos, donde se espera que el analista asegure la validez científica de sus datos.
+
+En este estudio particular se hará uso de la elicitación llamada: “Elicitación gráfica a mano alzada”.
+
+Todo el proceso de elicitación requiere la selección de los expertos, la preparación de las preguntas, el entrenamiento de los expertos, las entrevistas, el análisis, la escritura de las justificaciones, documentación, etc.
+
+Las elicitaciones como tal nos permiten hallar una distribución a priori para un parámetro el cual se está estudiando, de tal manera que mediante una distribución se pueda representar el conocimiento que tiene el experto bajo el problema de estudio, por lo tanto en este estudio el parámetro al  cual se le quiere hallar su distribución a priori es el $\beta$ asociado a un modelo de regresión lineal simple, en donde su variable respuesta (dependiente) es el precio de oferta del vehículo y la covariable(variable independiente) es el año (modelo del vehículo) por lo tanto el parámetro $\beta$ representa la tasa de cambio del precio del Mazda 3 por un cambio en el año de este.
+
+**El modelo a plantear se presenta a continuación:**
+
+$$Y = \beta_0 + \beta_1X + Error$$
+
+$$donde~el~Error \sim Normal (0, \sigma^2)$$
+
+Además de hallar una distribución a priori de los parámetros asociados a este modelo también se busca hallar una distribución posteriori de estos, la cual hará uso de la distribución a priori mencionada anteriormente y de una muestra, todo esto con el fin de permitir tener una aproximación más acertada de la verdadera tasa de cambio de los precios de oferta de un mazda 3 dado el año del cual provenga el vehículo.
+
+**Regresión lineal simple en la estadística bayesiana**
+
+La estimación de los parámetros de un modelo de regresión lineal simple es una tarea común en todas las áreas de las ciencias. Con la idea de obtener distribuciones conjugadas, la estimación Bayesiana de estos parámetros se lleva a cabo usando distribuciones a priori no informativas. 
+
+En este documento, se propone un técnica para construir una distribución a priori a partir de un proceso de elicitación llamado elicitación gráfica a mano alzada usando información de expertos. Para luego elicitar de forma indirecta la media y la varianza en cada uno de dichos valores de interés. La propuesta para la construcción de las distribución apriori se realiza mediante dos pasos, el primer paso describe el proceso de elicitación, y el segundo paso muestra un proceso de simulación para estimar los parámetros del modelo. 
+
+
+
+</div>
 
