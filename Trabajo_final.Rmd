@@ -461,6 +461,80 @@ Mediante esta elicitación ficticia se pretende preparar a los dos analistas par
 
 
 
+**Los aspectos a mejorar después de realizar la elicitación ficticia son:**
+
+-
+-
+-
+
+
+## Aplicación del Método de Elicitación
+
+_Momento de elicitar a nuestros expertos_
+
+* Los resumenes que salen despúes de cada elicitación son sacados a partir de las notas que pudo obtener cada facilitador en todo el proceso.
+
+
+## Experto 
+
+Este fue elicitado por ambos facilitadores:
+
+Jennifer Salazar Galvis y Juan Esteban Sanchez Pulgarin
+
+A este experto se acudió hasta su casa, en el cual se le pidió la colaboración en el proceso de elicitación, muy amablemente, el experto ofreció gran parte de su tiempo para realizar bien este proceso.
+
+A el experto se le explico cómo debía realizar cada uno de los procesos de elicitación, se le dieron las pautas y toda la información necesaria para ayudar a guiarlo en su proceso de estimación, el facilitador lo estuvo acompañando aproximadamente 5 horas en las que el experto estuvo analizando con mucha calma todo, luego de eso, se comenzó a la realización del proceso de elicitación el cual fue grabado para que los facilitadores después pudieran hacer uso de este recurso y utilizarlo en su análisis
+
+
+[Proceso de Elicitación Experto en compra y venta de carros de segunda](https://youtu.be/szkTps58MDM)
+
+
+<!-- <div> -->
+<!-- <p style = 'text-align:center;'> -->
+<!-- <iframe width="700" height="394" src="https://www.youtube.com/embed/szkTps58MDM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<!-- </div> -->
+<!-- </p> -->
+
+
+### Las plantillas de elicitación realizadas por este experto se presentan a continuación:
+
+**Elicitación para el mazda 3 sedan modelo 2012**
+
+<center>
+![](Imagenes_elicitaciones/plantilla_2012.png)
+</center>
+
+**Resumen de la elicitación**
+
+
+
+<br>
+
+
+
+**Elicitación para el mazda 3 sedan modelo 2016**
+
+<center>
+![](Imagenes_elicitaciones/plantilla_2016.png)
+</center>
+
+**Resumen de la elicitación**
+
+
+
+<br>
+
+
+
+## Cambios de opinión
+
+
+<br>
+
+
+## Creación de la distribución Apriori
+
+
 
 
 
