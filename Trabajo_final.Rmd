@@ -316,21 +316,24 @@ Una de las principales dificultades a la hora de obtener conocimiento experto es
 
 Se tendra en cuenta las siguientes preguntas antes de empezar el proceso de elicitación para tener un vinculo con el experto:
 
--   ¿Como es el mercado de los carros usados?
+- ¿Cuántos años de experiencia lleva en el campo?
 
--   ¿Cuantos carros vende aproximadamente en un mes?
+- ¿Cómo es el mercado de los carros de segunda?
 
--   ¿Cuales son los clientes tipicos que maneja?
+- ¿Cuántos carros vende aproximadamente en un mes?
 
--   ¿Que ventajas y desventajas tiene un automovil utilizado?
+- ¿Cuáles son los clientes típicos que maneja?
 
--   ¿Cuantos años de experiencia lleva en el campo?
+- ¿Qué ventajas y desventajas tiene un automóvil de segunda?
 
--   ¿Que lo motivo a desempeñarse en ese campo?
+- ¿Qué lo motivó a desempeñarse en ese campo?
 
--   ¿Cual es su vehiculo favorito?
+- ¿Cuál es su vehículo favorito?
 
--   ¿Se visualiza futuramente haciendo lo mismo?
+- ¿Se visualiza futuramente haciendo lo mismo?
+
+- ¿Por qué recomienda el automóvil el Mazda 3?
+
 
 <br>
 
@@ -550,35 +553,286 @@ A el experto se le explico cómo debía realizar cada uno de los procesos de eli
 
 ## Creación de la distribución Apriori
 
-```{r}
+Todos los precios dados durante el proceso de elicitación estan dados en millones de pesos.
+
+```{r, echo = FALSE}
 # Lectura de la base de datos
 library(readxl)
 Datos_experto <- read_excel("Datos_experto.xlsx")
-Datos_experto <- data.frame(Datos_experto)
 ```
 
-```{r}
-head(Datos_experto)
+```{r,echo=FALSE}
+library(kableExtra)
+kable(Datos_experto, caption = "Datos de las elicitaciones sobre el sobre los precios de oferta de un mazda 3 modelo 2012 y 2016") %>%
+  kable_paper("striped", full_width = F) %>%
+  scroll_box(width = "100%", height = "200px")
+
 ```
 
-## Gráfico de las distribuciones a priori del precio del Mazda 3 para el modelo 2012 y 2016
+<br>
 
-distribución del precio Mazda 3 modelo 2012
+## Gráfico de las distribuciones dadas por el experto del precio del Mazda 3 para el modelo 2012 y 2016
 
-```{r}
-plot(Datos_experto$Precio, Datos_experto$X2012, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="purple", main="Distribución del precio Mazda 3 modelo 2012")
+
+**distribución del precio Mazda 3 modelo 2012**
+
+```{r, echo = FALSE, fig.align="center"}
+plot(Datos_experto$Precio, Datos_experto$modelo_2012, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, main="Distribución del precio Mazda 3 modelo 2012", lwd=2, col = "deepskyblue3")
 grid()
 ```
 
-distribución del precio Mazda 3 modelo 2016
 
-```{r}
-plot(Datos_experto$Precio, Datos_experto$X2016, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="blue", main="Distribución del precio Mazda 3 modelo 2016")
+<br>
+
+
+**Promedio y varianza de la distribución del precio Mazda 3 modelo 2012**
+
+
+```{r, echo = FALSE}
+media_2012 <- sum(Datos_experto$Precio*Datos_experto$modelo_2012)/sum(Datos_experto$modelo_2012)
+
+var_2012 <- (sum(((Datos_experto$Precio-media_2012)^2)*Datos_experto$modelo_2012))/sum(Datos_experto$modelo_2012)
+
+sd_2012 <- sqrt(var_2012)
+
+df_2012 <- data.frame(media = media_2012, varianza = var_2012, desviacion = sd_2012)
+
+kable(df_2012, row.names = F, caption = "Medidas de resumen de la distribucón del precio de oferta mazda 3 modelo 2012") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+**distribución del precio Mazda 3 modelo 2016**
+
+```{r, echo=FALSE, fig.align="center"}
+plot(Datos_experto$Precio, Datos_experto$modelo_2016, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="firebrick", main="Distribución del precio Mazda 3 modelo 2016", lwd=2)
 grid()
 ```
 
-```{r}
+
+<br>
+
+
+**Promedio y varianza de la distribución del precio Mazda 3 modelo 2016**
+
+
+```{r, echo = FALSE}
+media_2016 <- sum(Datos_experto$Precio*Datos_experto$modelo_2016)/sum(Datos_experto$modelo_2016)
+
+var_2016 <- (sum(((Datos_experto$Precio-media_2016)^2)*Datos_experto$modelo_2016))/sum(Datos_experto$modelo_2016)
+
+sd_2016 <- sqrt(var_2016)
+
+df_2016 <- data.frame(media = media_2016, varianza = var_2016, desviacion = sd_2016)
+
+kable(df_2016, row.names = F, caption = "Medidas de resumen de la distribucón del precio de oferta mazda 3 modelo 2016") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
 ```
+
+
+<br>
+
+## Simulación inicial para la obtención de la distribución apriori
+
+Con la media y la varianza obtenidas anteriormente de las distribuciones de los precios de oferta de automoviles mazda 3 modelo 2012 y modelo 2016 se procede a extrar una muestra de tamaño **n equivalente** de una distribución normal con las medias y varianzas respectivas.
+
+
+el n equivalente es obtenido de acuerdo al nivel de experticie del experto en cada una de las distribuciones estimadas:
+
+<center>
+![](muestra_equivalente.png)
+</center>
+
+
+De tal manera que:
+
+* Para la estimación de la distribución de los precios de oferta del mazda 3 modelo 2012 el tamaño de muestra equivalente es de 15 dado que el experto tiene un buen conocimiento en el tema.
+
+* Para la estimación de la distribución de los precios de oferta del mazda 3 modelo 2016 el tamaño de muestra equivalente es de 15 dado que el experto tiene un buen conocimiento en el tema.
+
+
+#### Simulación de la primera muestra
+
+Pasos:
+
+
+1. Con la media y varianza obtenida de la distribución de los precios de oferta del mazda 3 modelo 2012 se extrae una muestra de tamaño 15 de una distribución normal mediante simulación:
+
+Haciendo uso de la función de **rnorm()**
+
+```{r}
+set.seed(2021)
+muestra_2012 <- rnorm(n=15,mean = media_2012, sd=sd_2012)
+```
+
+
+La muestra para el modelo 2012 es presentada a continuación:
+
+
+```{r, echo=FALSE}
+df_muestra_2012 <- data.frame(muestra_2012)
+
+kable(df_muestra_2012, row.names = F, caption = "muestra del precio de oferta para un mazda 3 modelo 2012") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+
+<br>
+
+
+2. Con la media y varianza obtenida de la distribución de los precios de oferta del mazda 3 modelo 2016 se extrae una muestra de tamaño 15 de una distribución normal mediante simulación:
+
+Haciendo uso de la función de **rnorm()**
+
+```{r}
+set.seed(2021)
+muestra_2016 <- rnorm(n=15,mean = media_2016, sd=sd_2016)
+```
+
+
+La muestra para el modelo 2016 es presentada a continuación:
+
+
+```{r, echo=FALSE}
+df_muestra_2016 <- data.frame(muestra_2016)
+
+kable(df_muestra_2016, row.names = F, caption = "muestra del precio de oferta para un mazda 3 modelo 2016") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+<br>
+
+Con las dos muestra de tamaño 15 obtenidas anteriormente se procede a ajustar un modelo de regresión lineal simple en donde la variable respuesta es el precio y la variable explicativa es el año del modelo del carro, del cual hace uso del conjunto de datos presentado a continuación:
+
+
+```{r, echo=FALSE}
+df_muestra1 <- data.frame(Precio=c(muestra_2012, muestra_2016), Año = c(rep(2012, 15), rep(2016, 15)))
+
+kable(df_muestra1, row.names = F, caption = "Conjunto de datos para el ajuste del modelo de regresión lineal simple") %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+
+```
+
+<hr>
+
+<br>
+
+
+
+### Ajuste del modelo de regresión lineal simple
+
+Este proceso se realiza con el interes de obtener de obtener los parametros del modelo de regresión lineal simple $\beta_0,~\beta_1,~ \sigma^2$
+
+
+
+```{r, echo=FALSE}
+modelo1 <- lm(Precio~Año, data=df_muestra1)
+beta_0 <- round(coef(modelo1)[1],2)
+beta_1 <- round(coef(modelo1)[2],2)
+sigma_2 <- round(summary(modelo1)$sigma^2,2)
+
+```
+
+
+**En donde se obtuvo el siguiente modelo estimado:**
+
+$$\hat{Precio} = \hat{\beta}_0 + \hat{\beta}_1*\text{Año}$$
+
+
+$$\hat{Precio} = `r beta_0` + `r beta_1`*\text{Año}$$
+
+
+
+Por tanto los parametros obtenidos son:
+
+
+$$\begin{array}{| c | c | c |}
+\hline
+\beta_0&\beta_1&\sigma^2\\
+\hline
+`r beta_0`&`r beta_1` & `r sigma_2`\\
+\hline
+\end{array}$$
+
+
+<br>
+
+
+**Todo el procedimiento anteriormente descrito se realiza 1000 veces, es decir:**
+
+Se realiza 1000 veces la extracción de las muestras de tamaño 15 mediante una distribución normal teniendo en cuenta media y varianza obtenidas de la distribuciones dada por el experto tanto para el modelo 2012 como para el modelo 2016, con ambas muestra se calcula un modelo de regresión lineal simple en donde obtenemos los parametros de los modelos por lo tanto, despues de realizar las 1000 simulaciones obtendremos 1000 estimaciones de cada uno de los parametros de un modelo de regresión lineal simple, los cuales son presentados a continuación:
+
+
+
+```{r, echo = FALSE}
+
+
+df_parametros <- data.frame(beta_0 = beta_0 , beta_1 = beta_1, sigma_2 = sigma_2)
+
+for(i in 2:1000){
+  set.seed(i)
+  muestra_2012 <- rnorm(n=15,mean = media_2012, sd=sd_2012)
+  muestra_2016 <- rnorm(n=15,mean = media_2016, sd=sd_2016)
+  
+  
+  df_muestras <- data.frame(Precio=c(muestra_2012, muestra_2016), Año = c(rep(2012, 15), rep(2016, 15)))
+  
+  modelo <- lm(Precio~Año, data=df_muestras)
+  beta_0 <- round(coef(modelo)[1],2)
+  beta_1 <- round(coef(modelo)[2],2)
+  sigma_2 <- round(summary(modelo)$sigma^2,2)
+  
+  parametros <- c(beta_0, beta_1, sigma_2)
+  
+  df_parametros <- rbind(df_parametros, parametros)
+}
+
+
+row.names(df_parametros) <- NULL
+
+```
+
+
+
+```{r, echo = FALSE}
+kable(df_parametros, col.names = c("β₀", "β₁", "σ²"), caption = "Parametros de modelo de regresión lineal simple obtenidos mediante simulación",row.names = TRUE) %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
