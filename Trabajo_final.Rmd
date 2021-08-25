@@ -12,47 +12,56 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<center>
 
+<h2>
 
+Introducción
 
-<center> <h2> Introducción </h2> </center>
+</h2>
 
+</center>
 
-El auge de la compra y venta  de los carros de segunda, es decir carros usados o semi nuevos ha tomado un gran impacto en la actualidad; a medida que pasan los años se ha vuelto una de las alternativas más viables para las personas interesadas en un automóvil, dado que manejan precios más favorables (ahorrar y pagar es más accesible) que los carros nuevos y en muchos casos estos pueden ser conseguidos en estados muy óptimos, además que una gran ventaja de comprar un carro usado es que, eventualmente, puedes venderlo en los próximos años por casi la misma cantidad que pagaste por él .
+El auge de la compra y venta de los carros de segunda, es decir carros usados o semi nuevos ha tomado un gran impacto en la actualidad; a medida que pasan los años se ha vuelto una de las alternativas más viables para las personas interesadas en un automóvil, dado que manejan precios más favorables (ahorrar y pagar es más accesible) que los carros nuevos y en muchos casos estos pueden ser conseguidos en estados muy óptimos, además que una gran ventaja de comprar un carro usado es que, eventualmente, puedes venderlo en los próximos años por casi la misma cantidad que pagaste por él .
 
 A partir del impacto que se ha destacado en la sociedad que es comprar y vender carros de segunda nace la motivación de plantear un modelo que estudie los precios de los carros través de los años, es decir cual es el precio promedio de una referencia de carro de un año determinado comparado con los demás años (Ej: cuánto aumenta el precio de un carro por ser modelo 2014 comparado con el del año anterior 2013), pero dado que los precios de carros pueden variar mucho de una marca a otra se toma la decisión de concentrarse en un marca en particular de automóvil que es el mazda3, el cual es un carro de gama media muy comercial, además de ser un carro que al público en general le atrae por las buenas características que este posee, por otro lado, el mazda 3 lleva muchos años en el mercado y sigue siendo un carro que actualmente sigue actualizando sus modelos.
 
 Para realizar este estudio se decide utilizar técnicas basadas en la estadística Bayesiana, la cual aparte de necesitar una muestra de los precios de carros, realiza la construcción de una distribución a priori de los precios de los carros basados en el conocimiento que tiene un experto en el área frente a este tema que se quiere estudiar.
 
-
-
 ## Marco teórico
-
 
 **¿Por qué se eligió el Mazda 3 para el estudio?**
 
 El Mazda 3 es sin lugar a dudas uno de los autos más populares de la marca nipona (Japón). Su diseño, versatilidad, rendimiento y tecnología, lo han convertido en uno de los vehículos favoritos de los conductores. Por estas razones no es sorprendente que muchos conductores busquen a diario en Internet opciones de Mazda 3 usados que puedan adquirir a un precio asequible.
 
 El Mazda 3 de segunda generación que comprende los modelos 2008 a 2012, es uno de los ejemplos de autos usados que puede ser una excelente opción de compra, pese a tener poco más de una década encima, no significa que sea un auto viejo, o peor aún, que no posea un buen rendimiento, aunque claro, eso también dependerá del uso que le haya dado cada dueño.
- 
-Es por todos esos atributos que esta generación del Mazda3 es considerada como una de las mejores ofertas disponibles hoy en día en el mercado de los autos usados o seminuevos, además de aportar la confiabilidad y durabilidad que caracteriza a los productos de Mazda.
-Ya que el Mazda 3 es un modelo muy comercial, el cual ha ganado varios premios lo convierte en un carro fácil de reconocer y encontrar en el mercado, sus precios son accesibles y presenta un diseño atractivo, por esas razones se decide estudiar el precio promedio de este vehículo, por otro lado, el experto confirma que posee conocimiento en este carro y es de su agrado.
- 
-**Lemas dados por la empresa MAZDA:** “El potencial humano y las cosas increíbles que hacen las personas son la fuente de nuestra inspiración, por eso hacemos parte de la grandeza en su camino con un vehículo capaz de encender sus sentidos, con un diseño mundialmente galardonado y creado para darles una experiencia de conducción en perfecta armonía.”
 
-AVANZA CON TU GRANDEZA
-“Avanzar: esa es la palabra que le da vida a nuestro propósito de impulsar la grandeza humana kilómetro a kilómetro con tal dedicación que la tecnología, el diseño y la ingeniería se armonizan a la perfección para respaldar tu camino.”
+Es por todos esos atributos que esta generación del Mazda3 es considerada como una de las mejores ofertas disponibles hoy en día en el mercado de los autos usados o seminuevos, además de aportar la confiabilidad y durabilidad que caracteriza a los productos de Mazda. Ya que el Mazda 3 es un modelo muy comercial, el cual ha ganado varios premios lo convierte en un carro fácil de reconocer y encontrar en el mercado, sus precios son accesibles y presenta un diseño atractivo, por esas razones se decide estudiar el precio promedio de este vehículo, por otro lado, el experto confirma que posee conocimiento en este carro y es de su agrado.
+
+**Lemas dados por la empresa MAZDA:** "El potencial humano y las cosas increíbles que hacen las personas son la fuente de nuestra inspiración, por eso hacemos parte de la grandeza en su camino con un vehículo capaz de encender sus sentidos, con un diseño mundialmente galardonado y creado para darles una experiencia de conducción en perfecta armonía."
+
+AVANZA CON TU GRANDEZA "Avanzar: esa es la palabra que le da vida a nuestro propósito de impulsar la grandeza humana kilómetro a kilómetro con tal dedicación que la tecnología, el diseño y la ingeniería se armonizan a la perfección para respaldar tu camino."
 
 <br>
 
-<h3> <center> Especificaciones técnicas del carro </center> </h3> 
+<h3>
+
+<center>
+
+Especificaciones técnicas del carro
+
+</center>
+
+</h3>
 
 <br>
 
 **Contextualización del mazda 3**
 
 <center>
+
 ![](Imagenes_carros/LogoMazda.png)
+
 </center>
 
 <br>
@@ -60,12 +69,12 @@ AVANZA CON TU GRANDEZA
 El Mazda 3 es un coche perteneciente al segmento C fabricado por la marca japonesa de automóviles Mazda. Se construye desde 2003 , el conocido entonces como Mazda 323 tuvo como sustituto a un vehículo que tomó el nombre del Mazda 3, aunque en otros mercados como Japón se le conoce como Mazda Axela. El mazda 3 se coloca entre el Mazda 2 y el Mazda 6. La primera y la segunda generación están relacionadas tecnológicamente con el Ford Focus y el Volvo S40/V50 pues comparten plataforma.
 
 El Mazda 3 ha sido bien recibido en muchos mercados. En el 2004, como modelo recién estrenado, fue el tercer automóvil mejor vendido en Canadá. El 8 de septiembre de 2006, Mazda anunció a la prensa que había producido 1 millón de unidades del Mazda 3, convirtiéndolo en su modelo más vendido. Es un récord que Mazda lograra esa cifra en tan corto periodo. En Colombia, a pesar de que su producción local cesó para el modelo 2014, siguió estando en la lista de 10 más vendidos en 2017, proveniente de México.
- 
+
 Un Mazda 3 de segunda generación para el año modelo 2009 se presentó a finales de 2008, con el sedán estrenado en el Salón del Automóvil de Los Ángeles y el hatchback en el Salón del Automóvil de Bolonia . Para el año modelo 2012, Mazda comenzó a ofrecer el Mazda 3 con su tecnología Skyactiv recientemente desarrollada , que incluye una carrocería más rígida, un nuevo motor de inyección directa y una nueva transmisión de 6 velocidades.
 
 En enero de 2019 el Mazda3 se convirtió en el vehículo más rápidamente vendido de Mazda, con unas ventas acumuladas de más de 6 millones de unidades.
 
-El Mazda3 ha recibido más de 130 premios en su vida comercial entre los que se destacan el galardón de diseño Autobild (2009), uno de los más reconocidos en Europa, que recogió la opinión de 200 mil lectores de la revista en 27 países. Ellos eligieron al Mazda3 como el modelo más atractivo del segmento de vehículos compactos. Por su parte la revista JD Power lo calificó como el modelo mejor vendido en la encuesta de satisfacción del consumidor en el 2011 después de ser el compacto número 1 en el 2010. Adicional a estos premios, recibió alrededor de 50 títulos como “vehículo del año” en diferentes países alrededor del mundo.
+El Mazda3 ha recibido más de 130 premios en su vida comercial entre los que se destacan el galardón de diseño Autobild (2009), uno de los más reconocidos en Europa, que recogió la opinión de 200 mil lectores de la revista en 27 países. Ellos eligieron al Mazda3 como el modelo más atractivo del segmento de vehículos compactos. Por su parte la revista JD Power lo calificó como el modelo mejor vendido en la encuesta de satisfacción del consumidor en el 2011 después de ser el compacto número 1 en el 2010. Adicional a estos premios, recibió alrededor de 50 títulos como "vehículo del año" en diferentes países alrededor del mundo.
 
 <br>
 
@@ -73,13 +82,18 @@ El Mazda3 ha recibido más de 130 premios en su vida comercial entre los que se 
 
 <br>
 
-<h2> Primera generación (2003-2008) </h2>
+<h2>
+
+Primera generación (2003-2008)
+
+</h2>
+
 <hr>
 
 <center>
-![](Imagenes_carros/Generacion1_foto1.png){width=30%}
-![](Imagenes_carros/Generacion1_foto2.png){width=30%}
-![](Imagenes_carros/Generacion1_foto3.png){width=30%}
+
+![](Imagenes_carros/Generacion1_foto1.png){width="30%"} ![](Imagenes_carros/Generacion1_foto2.png){width="30%"} ![](Imagenes_carros/Generacion1_foto3.png){width="30%"}
+
 </center>
 
 <br>
@@ -90,14 +104,18 @@ El Mazda3 está basado en la plataforma C1 global de Ford, compartida con el For
 
 <br>
 
+<h2>
 
-<h2> Segunda generación (2008-2013) </h2>
+Segunda generación (2008-2013)
+
+</h2>
+
 <hr>
 
 <center>
-![](Imagenes_carros/Generacion2_foto2.png){width=30%}
-![](Imagenes_carros/Generacion2_foto1.png){width=30%}
-![](Imagenes_carros/Generacion2_foto3.png){width=30%}
+
+![](Imagenes_carros/Generacion2_foto2.png){width="30%"} ![](Imagenes_carros/Generacion2_foto1.png){width="30%"} ![](Imagenes_carros/Generacion2_foto3.png){width="30%"}
+
 </center>
 
 <br>
@@ -106,16 +124,17 @@ Para 2008 durante el Salón de Los Ángeles se anunció el nacimiento de la segu
 
 <br>
 
+<h2>
 
+Tercera generación (2013-2018)
 
+</h2>
 
-<h2> Tercera generación (2013-2018) </h2>
 <hr>
 
 <center>
-![](Imagenes_carros/Generacion3_foto2.png){width=30%}
-![](Imagenes_carros/Generacion3_foto3.png){width=35%}
-![](Imagenes_carros/Generacion3_foto1.png){width=30%}
+
+![](Imagenes_carros/Generacion3_foto2.png){width="30%"} ![](Imagenes_carros/Generacion3_foto3.png){width="35%"} ![](Imagenes_carros/Generacion3_foto1.png){width="30%"}
 
 </center>
 
@@ -125,20 +144,23 @@ La tercera generación del Mazda3, como modelo 2014, se presentó en Australia e
 
 Tiene un coeficiente de arrastre (Cd) de 0.26 en el sedán y ligeramente más alto para el hatchback. Combinado con la tecnología SkyActiv, este tiene un consumo combinado de acuerdo a la EPA de Estados Unidos de 7.8 L/100 km en ciudad y de 5.7 L/100 km en carretera en el sedán 2 litros, y un poco menos para el hatchback 5 puertas.
 
-
 <br>
 
-<h2> Cuarta generación (2019-Presente) </h2>
+<h2>
+
+Cuarta generación (2019-Presente)
+
+</h2>
+
 <hr>
 
 <center>
-![](Imagenes_carros/Generacion4_foto1.png){width=30%}
-![](Imagenes_carros/Generacion4_foto2.png){width=30%}
-![](Imagenes_carros/Generacion4_foto3.png){width=30%}
+
+![](Imagenes_carros/Generacion4_foto1.png){width="30%"} ![](Imagenes_carros/Generacion4_foto2.png){width="30%"} ![](Imagenes_carros/Generacion4_foto3.png){width="30%"}
+
 </center>
 
 <br>
-
 
 Los Mazda 3 hatchback y sedán de cuarta generación fueron revelados en el Salón del Automóvil de Los Ángeles el 28 de noviembre de 2018. Ambos tienen el lenguaje de diseño KODO mejorado basado en los autos concepto Visión; en particular el Concepto Kai.
 
@@ -148,18 +170,21 @@ Con esta generación se mejoró el nivel de calidad y refinamiento, además de o
 
 <br>
 
+<h3>
 
+<center>
 
-<h3> <center> Constructor y distribuidores </center> </h3> 
+Constructor y distribuidores
 
+</center>
+
+</h3>
 
 **Constructores**
 
 Los únicos fabricantes del mazda 3 son la empresa oficial y se presenta a continuación:
 
-**Mazda Motor Corporation** es un fabricante de automóviles japonés, fundada en 1920, con sede principal en Hiroshima, y con plantas en las localidades de Hiroshima (factoría de Ujina), Nishinoura, Nakanoseki (Hofu) y Miyoshi, Japón. En 2010, produjo 1 307 540 automóviles con ventas en China, Japón, Europa, América del Sur y Norteamérica.
-Actualmente, La compañía de automóviles japonesa está avanzando con seguridad por medio de distintas iniciativas, como la expansión de su infraestructura de producción internacional, la maximización de la eficiencia de producción o un control reforzado sobre los costes fijos dirigido a compensar las fluctuaciones en los tipos de cambio. El desarrollo de la línea de tecnologías SkyActiv, Mazda Connect y Sistema de seguridad i- Activesense continúa siendo un elemento focal central.
-Al año 2017, Mazda logró posicionarse como una de las compañías más confiables del mundo. El fabricante tiene intención de seguir capitalizando su marca, con el fin de abrir nuevos mercados en países donde está ausente la compañía.
+**Mazda Motor Corporation** es un fabricante de automóviles japonés, fundada en 1920, con sede principal en Hiroshima, y con plantas en las localidades de Hiroshima (factoría de Ujina), Nishinoura, Nakanoseki (Hofu) y Miyoshi, Japón. En 2010, produjo 1 307 540 automóviles con ventas en China, Japón, Europa, América del Sur y Norteamérica. Actualmente, La compañía de automóviles japonesa está avanzando con seguridad por medio de distintas iniciativas, como la expansión de su infraestructura de producción internacional, la maximización de la eficiencia de producción o un control reforzado sobre los costes fijos dirigido a compensar las fluctuaciones en los tipos de cambio. El desarrollo de la línea de tecnologías SkyActiv, Mazda Connect y Sistema de seguridad i- Activesense continúa siendo un elemento focal central. Al año 2017, Mazda logró posicionarse como una de las compañías más confiables del mundo. El fabricante tiene intención de seguir capitalizando su marca, con el fin de abrir nuevos mercados en países donde está ausente la compañía.
 
 En el año 2018 vende una participación del 5% a la multinacional Toyota.
 
@@ -169,62 +194,75 @@ En el año 2018 vende una participación del 5% a la multinacional Toyota.
 
 A nivel de Colombia los unicos distribuidores son:
 
-**MAZDA DE COLOMBIA S.A.S. (“MCOL”)** y página virtuales oficiales de mazda si se está hablando de carros nuevos.
+**MAZDA DE COLOMBIA S.A.S. ("MCOL")** y página virtuales oficiales de mazda si se está hablando de carros nuevos.
 
-Los distribuidores de carros de segunda (autos usados o seminuevos) son demasiados y diversos por lo tanto no hay un registro oficial de todos ellos. 
+Los distribuidores de carros de segunda (autos usados o seminuevos) son demasiados y diversos por lo tanto no hay un registro oficial de todos ellos.
 
 <br>
 
-<h3> <center> Tipo de usuarios de este vehículo </center> </h3> 
+<h3>
 
+<center>
 
-<center> “Elegante y divertido” </center>
- 
+Tipo de usuarios de este vehículo
+
+</center>
+
+</h3>
+
+<center>
+
+"Elegante y divertido"
+
+</center>
+
 El Mazda 3 es todo lo que esperabas, gracias a sus prestaciones se adapta a tus necesidades, es un vehículo para el trabajo y para sus pasatiempos, con un estilo sofisticado y dinámico, la pasión del Mazda es la emoción que brinda a la hora de conducir.
- 
-Está diseñado para personas que quieran un automóvil de gama media pero con características muy parecidas a automóviles de alta gama en especial porque maneja precios muy accesibles combinado con  un diseño muy deseable dado que son vehículos fusionan un frontal muy atractivo con líneas laterales que parecen esculpidas por el viento.
 
-Además personas cuyo interés sea tener un carro con eficiencia en el combustible dado que tiene versiones de motor de gasolina económicas, también  es un auto con enfoque en turismo, es decir para la familia o los amigos, dado que se compone de 4 puertas para mayor comodidad y un maletero, además de ser uno de los pocos  autos con tantas opciones a elegir en cuanto a motores, transmisiones y carrocerías, también se destaca por su brilló, por la calidad de sus materiales y ensambles, haciéndolo uno de los autos más completos ya que ofrece una opción para todo tipo de gusto y necesidad.
+Está diseñado para personas que quieran un automóvil de gama media pero con características muy parecidas a automóviles de alta gama en especial porque maneja precios muy accesibles combinado con un diseño muy deseable dado que son vehículos fusionan un frontal muy atractivo con líneas laterales que parecen esculpidas por el viento.
+
+Además personas cuyo interés sea tener un carro con eficiencia en el combustible dado que tiene versiones de motor de gasolina económicas, también es un auto con enfoque en turismo, es decir para la familia o los amigos, dado que se compone de 4 puertas para mayor comodidad y un maletero, además de ser uno de los pocos autos con tantas opciones a elegir en cuanto a motores, transmisiones y carrocerías, también se destaca por su brilló, por la calidad de sus materiales y ensambles, haciéndolo uno de los autos más completos ya que ofrece una opción para todo tipo de gusto y necesidad.
 
 además de aportar la confiabilidad y durabilidad que caracteriza a los productos de Mazda.
 
 Además, gracias a su amplio portafolio de modelos, Mazda satisface las necesidades y estilos de vida de sus clientes, por ejemplo, para aquellas personas solteras que buscan un sedán o hatchback, Mazda les recomienda el All-New Mazda 3 o una SUV compacta como Mazda CX-3 o All-New Mazda CX-30, mientras si buscas que tu primer auto sea familiar, se recomienda una camioneta más amplia como la Mazda CX-5 o CX9, de tres filas de asientos.
 
-
 <br>
 
-<h3> <center> Especificaciones técnicas del carro  </center> </h3> 
+<h3>
+
+<center>
+
+Especificaciones técnicas del carro
+
+</center>
+
+</h3>
 
 En la actualidad el Mazda 3 dispone de carrocería de dos volúmenes, un hatchback con cinco puertas y también de un sedán de cuatro puertas. La carrocería de cinco puertas está en el entorno de los 1200 kilos mientras que el cuatro puertas tiene un peso unos 35 kilos superior. La longitud de la carrocería de dos volúmenes se sitúa en nada menos que 4,47 metros, ofreciendo un maletero no demasiado amplio de 365 litros.
 
 La motorización básica de gasolina es un cuatro cilindros de 1.5 litros atmosférico de 100 CV que ofrece toda su potencia a las ruedas delanteras con una transmisión manual de seis relaciones y que anuncia un consumo de 5,1 litros a los 100. Por encima de éste se sitúa la primera versión del bloque de dos litros y cuatro cilindros que tiene 120 CV de potencia. Este bloque motor también se ofrece en una versión de 165 CV pero igual que en la mecánica menos potente existe una versión automática de seis marchas, el 2.0 de 165 CV sólo se ofrece con cambio manual de seis marchas.
 
-
 Elección del modelo de carro particular:
 
 Dado que se debe utilizar un carro en particular vamos a concentrar este estudio en el mazda 3 sedan (4 puertas) de caja manual el cual es el más común el mercado y crea un mayor interés a los investigadores, además de ello como se realiza el planteamiento de un modelo de regresión lineal simple para la modelación de los precios de oferta solo es necesario tener en cuenta dos años de carros los cuales fueron escogidos el mazda 3 sedan modelo 2012 y modelo 2016, que fueron escogidos por el experto, porque desde su perspectiva son los dos modelos de mazda 3 de segunda más comerciales.
 
-
 (poner imagenes de Fichas tecnicas del 2012 y 2016)
 
-
 <br>
-
 
 **¿Por qué hacemos uso de la estadística Bayesiana para estudiar los precios de los distintos modelos de un mazda 3?**
 
 Una de las principales limitaciones de la estadística clásica o frecuentista es que no permite incorporar de manera coherente en el análisis estadístico la información extra-muestral o información previa que provenga de expertos en el área disponible, ya que se apoya únicamente en datos muestrales observados y en muchas casos esta información adicional puede ser de mucha utilidad, ya que viene directamente de personas que tienen una experiencia y experticia en el tema, la cual puede tener una perspectiva más acertada del fenómeno que se está estudiando.
 
-
 En la práctica, a menudo la incertidumbre o el desconocimiento sobre el tema de interés hace que la toma de decisiones sea en la mayoría de los casos muy compleja, por lo cual es común que las decisiones se apoyan en expertos que proporcionan información en forma de estimaciones de probabilidad con respecto a dichas incertidumbres. Las distribuciones de probabilidad son una de las representaciones más usadas de la incertidumbre que se tiene acerca de un tema de interés. Dichas distribuciones no son más que expresiones formales de lo que piensa o sabe un experto, por lo tanto, no es adecuado juzgarlas como buenas o malas. La transformación mental de conocimiento subjetivo en una distribución de probabilidad es una tarea difícil (van Lenthe, 1993) y se deben tener en cuenta algunas técnicas para la captura de la información, teniendo siempre en mente que es un proceso extremadamente delicado; En este caso puntual vamos a hacer uso de las técnicas popularmente utilizadas en la estadística Bayesiana llamadas elicitaciones (distribuciones no informativas).
 
 El proceso de elicitación debe enfrentar un protocolo cuidadoso y profesional que le permita al analista documentar el proceso. En general, dicho protocolo no difiere mucho de los principios estándares de recolección de datos, donde se espera que el analista asegure la validez científica de sus datos.
 
-En este estudio particular se hará uso de la elicitación llamada: “Elicitación gráfica a mano alzada”.
+En este estudio particular se hará uso de la elicitación llamada: "Elicitación gráfica a mano alzada".
 
 Todo el proceso de elicitación requiere la selección de los expertos, la preparación de las preguntas, el entrenamiento de los expertos, las entrevistas, el análisis, la escritura de las justificaciones, documentación, etc.
 
-Las elicitaciones como tal nos permiten hallar una distribución a priori para un parámetro el cual se está estudiando, de tal manera que mediante una distribución se pueda representar el conocimiento que tiene el experto bajo el problema de estudio, por lo tanto en este estudio el parámetro al  cual se le quiere hallar su distribución a priori es el $\beta$ asociado a un modelo de regresión lineal simple, en donde su variable respuesta (dependiente) es el precio de oferta del vehículo y la covariable(variable independiente) es el año (modelo del vehículo) por lo tanto el parámetro $\beta$ representa la tasa de cambio del precio del Mazda 3 por un cambio en el año de este.
+Las elicitaciones como tal nos permiten hallar una distribución a priori para un parámetro el cual se está estudiando, de tal manera que mediante una distribución se pueda representar el conocimiento que tiene el experto bajo el problema de estudio, por lo tanto en este estudio el parámetro al cual se le quiere hallar su distribución a priori es el $\beta$ asociado a un modelo de regresión lineal simple, en donde su variable respuesta (dependiente) es el precio de oferta del vehículo y la covariable(variable independiente) es el año (modelo del vehículo) por lo tanto el parámetro $\beta$ representa la tasa de cambio del precio del Mazda 3 por un cambio en el año de este.
 
 **El modelo a plantear se presenta a continuación:**
 
@@ -236,94 +274,79 @@ Además de hallar una distribución a priori de los parámetros asociados a este
 
 **Regresión lineal simple en la estadística bayesiana**
 
-La estimación de los parámetros de un modelo de regresión lineal simple es una tarea común en todas las áreas de las ciencias. Con la idea de obtener distribuciones conjugadas, la estimación Bayesiana de estos parámetros se lleva a cabo usando distribuciones a priori no informativas. 
+La estimación de los parámetros de un modelo de regresión lineal simple es una tarea común en todas las áreas de las ciencias. Con la idea de obtener distribuciones conjugadas, la estimación Bayesiana de estos parámetros se lleva a cabo usando distribuciones a priori no informativas.
 
-En este documento, se propone un técnica para construir una distribución a priori a partir de un proceso de elicitación llamado elicitación gráfica a mano alzada usando información de expertos. Para luego elicitar de forma indirecta la media y la varianza en cada uno de dichos valores de interés. La propuesta para la construcción de las distribución apriori se realiza mediante dos pasos, el primer paso describe el proceso de elicitación, y el segundo paso muestra un proceso de simulación para estimar los parámetros del modelo. 
+En este documento, se propone un técnica para construir una distribución a priori a partir de un proceso de elicitación llamado elicitación gráfica a mano alzada usando información de expertos. Para luego elicitar de forma indirecta la media y la varianza en cada uno de dichos valores de interés. La propuesta para la construcción de las distribución apriori se realiza mediante dos pasos, el primer paso describe el proceso de elicitación, y el segundo paso muestra un proceso de simulación para estimar los parámetros del modelo.
 
 <br>
 
-
 ## Metodología
 
-Se pretende desarrollar técnicas que permitan estimar el precio de oferta de los automóviles mazda 3 sedan mediante elicitaciones, con estas se pretenden estimar distintas distribuciones de los parámetros de un modelo de regresión lineal simple que tiene como variable respuesta los precios de oferta y variable explicativa año o modelo del carro; todo el proceso para obtener las estimaciones es implementado mediante el software R. El proceso de elicitación es planificado exhaustivamente siguiendo las pautas que el campo ha establecido como adecuadas de manera que el analista pueda llevar registro de todas estimaciones hechas por el experto y brindarle retroalimentación continua durante todo el proceso. Inicialmente se revisan los enfoques y desarrollos actuales para la cuantificación de la incertidumbre o creencias que un “experto” tiene sobre los parámetros a estudiar. Por medio de un proceso de elicitación de ensayo se prepara a los expertos hasta que tenga un entendimiento completo de cómo se desarrolla un proceso de elicitación y para la preparación de los analistas (facilitadores) se realiza lo que se conoce como una elicitación ficticia dado que la elicitación es un proceso complejo que exige al facilitador una serie de habilidades de entrevista y una comprensión razonable del campo en el que se realice la elicitación, de tal manera que ambas partes estén lo suficientemente aptas para realizar el proceso de elicitación. Después de recolectada la información se desarrolla algoritmos para la estimación de distribuciones apriori, en las cuales se desarrollaron procedimientos como: análisis de la distribuciones de probabilidad dadas por los expertos, sacar muestras mediante simulaciones a partir de estas distribuciones teniendo en cuenta el nivel de experiencia del experto, finalmente obteniendo una distribución de densidad promedio (distribución apriori) para cada uno de los parámetro, el cual posteriormente se le realizan intervalos de probabilidad el cual nos permite entender y estimar los distintos parámetros y llegar a una estimación óptima del precio de oferta de los mazda 3 sedan.
+Se pretende desarrollar técnicas que permitan estimar el precio de oferta de los automóviles mazda 3 sedan mediante elicitaciones, con estas se pretenden estimar distintas distribuciones de los parámetros de un modelo de regresión lineal simple que tiene como variable respuesta los precios de oferta y variable explicativa año o modelo del carro; todo el proceso para obtener las estimaciones es implementado mediante el software R. El proceso de elicitación es planificado exhaustivamente siguiendo las pautas que el campo ha establecido como adecuadas de manera que el analista pueda llevar registro de todas estimaciones hechas por el experto y brindarle retroalimentación continua durante todo el proceso. Inicialmente se revisan los enfoques y desarrollos actuales para la cuantificación de la incertidumbre o creencias que un "experto" tiene sobre los parámetros a estudiar. Por medio de un proceso de elicitación de ensayo se prepara a los expertos hasta que tenga un entendimiento completo de cómo se desarrolla un proceso de elicitación y para la preparación de los analistas (facilitadores) se realiza lo que se conoce como una elicitación ficticia dado que la elicitación es un proceso complejo que exige al facilitador una serie de habilidades de entrevista y una comprensión razonable del campo en el que se realice la elicitación, de tal manera que ambas partes estén lo suficientemente aptas para realizar el proceso de elicitación. Después de recolectada la información se desarrolla algoritmos para la estimación de distribuciones apriori, en las cuales se desarrollaron procedimientos como: análisis de la distribuciones de probabilidad dadas por los expertos, sacar muestras mediante simulaciones a partir de estas distribuciones teniendo en cuenta el nivel de experiencia del experto, finalmente obteniendo una distribución de densidad promedio (distribución apriori) para cada uno de los parámetro, el cual posteriormente se le realizan intervalos de probabilidad el cual nos permite entender y estimar los distintos parámetros y llegar a una estimación óptima del precio de oferta de los mazda 3 sedan.
 
 Para el calculo de la distribución apriori se tiene en cuenta el siguiente algoritmo:
-
 
 **Algoritmo de estimación de los parámetros de un modelo de regresión lineal simple:**
 
 Ahora, presentamos nuestra propuesta de dos pasos. En el primer paso, se obtienen algunos cuantiles de la distribución de la variable de respuesta en el modelo de regresión con respecto a un valor particular de la variable explicativa. En este paso también se obtienen la media, la varianza y el tamaño de muestra equivalente correspondiente. Tenga en cuenta que obtener los cuantiles de una variable aleatoria es más fácil que obtener los parámetros del modelo directamente (Demuynck, 2013).
 
-En el segundo paso, se realiza una simulación para generar muestras de la variable de respuesta, considerando sus puntos de diseño correspondientes, con el fin de estimar repetidamente los parámetros del modelo varias veces. Es más fácil para los expertos dar su opinión sobre un valor central que sobre cualquier otro valor en el rango de valores posibles de una variable. Este argumento se basa en el hecho de que a las personas les resulta más fácil describir los eventos que ocurren con más frecuencia que los que son raros. Por ello, se recomienda establecer como puntos de diseño valores cercanos a la media de la variable explicativa. En este punto, se debe evitar cualquier tipo de sesgo (por ejemplo, anclaje, disponibilidad o exceso de confianza) durante la obtención, ya que puede llevar el proceso de obtención por el camino equivocado y cualquier método implementado fallaría en hacer una buena estimación de las distribuciones anteriores.
-(O'Hagan, 2019).
+En el segundo paso, se realiza una simulación para generar muestras de la variable de respuesta, considerando sus puntos de diseño correspondientes, con el fin de estimar repetidamente los parámetros del modelo varias veces. Es más fácil para los expertos dar su opinión sobre un valor central que sobre cualquier otro valor en el rango de valores posibles de una variable. Este argumento se basa en el hecho de que a las personas les resulta más fácil describir los eventos que ocurren con más frecuencia que los que son raros. Por ello, se recomienda establecer como puntos de diseño valores cercanos a la media de la variable explicativa. En este punto, se debe evitar cualquier tipo de sesgo (por ejemplo, anclaje, disponibilidad o exceso de confianza) durante la obtención, ya que puede llevar el proceso de obtención por el camino equivocado y cualquier método implementado fallaría en hacer una buena estimación de las distribuciones anteriores. (O'Hagan, 2019).
 
 (Agregar lo de la aproximación a la normal por la gamma inversa).
 
-Después de obtener de manera correcta la distribución apriori, se realiza los procedimientos adecuados para obtener la distribución posterior, la cual necesita una muestra de precios de carros que es extraída de las páginas de internet que venden carros de segunda; se  realiza un análisis descriptivo de estos datos y se hace uso del  paquete MCMCpack para determinar un modelo bayesiano y mediante los resultados obtenidos se realiza una interpretación y un análisis para ver que tanto concuerda el conocimiento del experto con la información muestral.
-
+Después de obtener de manera correcta la distribución apriori, se realiza los procedimientos adecuados para obtener la distribución posterior, la cual necesita una muestra de precios de carros que es extraída de las páginas de internet que venden carros de segunda; se realiza un análisis descriptivo de estos datos y se hace uso del paquete MCMCpack para determinar un modelo bayesiano y mediante los resultados obtenidos se realiza una interpretación y un análisis para ver que tanto concuerda el conocimiento del experto con la información muestral.
 
 <br>
-
 
 ## Características del estudio
 
-* El estudio está basado en el precio de oferta de los automoviles mazda 3 sédan de segunda.
+-   El estudio está basado en el precio de oferta de los automoviles mazda 3 sédan de segunda.
 
-* Se pretende modelar los precios de oferta mediante el año del carro.
+-   Se pretende modelar los precios de oferta mediante el año del carro.
 
-* El estudio esta basado en los precios a nivel de Colombia.
+-   El estudio esta basado en los precios a nivel de Colombia.
 
-* La idea es intentar hacer una estimación puntual, distribucional y realizar inferencias sobre la estimación de parametros de un modelo de regresión lineal simple.
-
+-   La idea es intentar hacer una estimación puntual, distribucional y realizar inferencias sobre la estimación de parametros de un modelo de regresión lineal simple.
 
 <br>
 
+## Antecedentes y Preparación
 
-
-## Antecedentes y Preparación 
-
-Una de las principales dificultades a la hora de obtener conocimiento experto es seleccionar y formular las preguntas adecuadas de tal manera que los expertos comprendan lo que se está preguntando y proporcionen realmente la información esperada. Para este propósito, se debe preparar cuidadosamente una lista de preguntas. Sin embargo, durante el proceso de elicitación, la estructura de una pregunta podría cambiar ligeramente, siempre que no se altere su significado subyacente. Por lo tanto, se deben examinar todos los métodos de elicitación para identificar el vocabulario apropiado para las preguntas y comparar todas esas características en función de los diferentes parámetros a estimar. En otras palabras, en lugar de utilizar preguntas estructurales en un proceso de elicitación, debemos adaptarlas a cada experto e intentar interactuar con ellos durante el proceso de entrevista / encuesta. 
-
+Una de las principales dificultades a la hora de obtener conocimiento experto es seleccionar y formular las preguntas adecuadas de tal manera que los expertos comprendan lo que se está preguntando y proporcionen realmente la información esperada. Para este propósito, se debe preparar cuidadosamente una lista de preguntas. Sin embargo, durante el proceso de elicitación, la estructura de una pregunta podría cambiar ligeramente, siempre que no se altere su significado subyacente. Por lo tanto, se deben examinar todos los métodos de elicitación para identificar el vocabulario apropiado para las preguntas y comparar todas esas características en función de los diferentes parámetros a estimar. En otras palabras, en lugar de utilizar preguntas estructurales en un proceso de elicitación, debemos adaptarlas a cada experto e intentar interactuar con ellos durante el proceso de entrevista / encuesta.
 
 Se tendra en cuenta las siguientes preguntas antes de empezar el proceso de elicitación para tener un vinculo con el experto:
 
-* ¿Como es el mercado de los carros usados?
+-   ¿Como es el mercado de los carros usados?
 
-* ¿Cuantos carros vende aproximadamente en un mes?
+-   ¿Cuantos carros vende aproximadamente en un mes?
 
-* ¿Cuales son los clientes tipicos que maneja?
+-   ¿Cuales son los clientes tipicos que maneja?
 
-* ¿Que ventajas y desventajas tiene un automovil utilizado?
+-   ¿Que ventajas y desventajas tiene un automovil utilizado?
 
-* ¿Cuantos años de experiencia lleva en el campo?
+-   ¿Cuantos años de experiencia lleva en el campo?
 
-* ¿Que lo motivo a desempeñarse en ese campo?
+-   ¿Que lo motivo a desempeñarse en ese campo?
 
-* ¿Cual es su vehiculo favorito?
+-   ¿Cual es su vehiculo favorito?
 
-* ¿Se visualiza futuramente haciendo lo mismo?
-
+-   ¿Se visualiza futuramente haciendo lo mismo?
 
 <br>
-
-
 
 ## Definición de elicitación
 
 En términos de análisis estadístico, elicitación es el proceso de formulación de los conocimientos de un experto sobre una afirmación o un tema en particular como una distribución de probabilidad, cuando los datos científicos no se encuentran, están dispersos o son poco informativos (Garthwaite et al., 2005). Una distribución de probabilidad elicitada es comúnmente usada como distribución apriori en el análisis bayesiano donde ésta representa las creencias iniciales acerca de los parámetros de un modelo. Es común en los procesos de elicitación la participación de un facilitador, quien ayuda al experto en la formulación de los conocimientos en forma probabilística.
 
-El objetivo de la elicitación entonces es producir una distribución apriori útil que capture la opinión del experto y la integración de sus experiencias, dado que, si un “experto” puede ordenar un conjunto completo de acontecimientos en una forma coherente, entonces la opinión de ese “experto” puede ser representada por una función de probabilidad.
+El objetivo de la elicitación entonces es producir una distribución apriori útil que capture la opinión del experto y la integración de sus experiencias, dado que, si un "experto" puede ordenar un conjunto completo de acontecimientos en una forma coherente, entonces la opinión de ese "experto" puede ser representada por una función de probabilidad.
 
-Dado que el fin de la elicitación es representar la opinión del experto que está siendo elicitado, cualquier intento de validación deberá utilizar como datos únicamente otras declaraciones de fe por ese experto, pues el conocimiento se encuentra en la cabeza del experto, y no puede ser medido fácilmente (O’Hagan, 2005). Ahora, más allá de estas componentes, el principal criterio para validar un proceso de elicitación es el sentido práctico. Estos métodos se diferencian de otros, al no tratar de especificar que las estimaciones hechas por el experto son “correctas”. Todas las estimaciones auto consistentes o coherentes son admisibles siempre y cuando el experto sienta que correspondan con sus juicios, entonces toda vez que el método cumpla los criterios matemáticos básicos de coherencia e involucre algunas pruebas de fiabilidad, es un buen método, obviamente sin perder de vista que lo deseable en un proceso de elicitación es que sea lo más fácil posible para los expertos expresar sus creencias en términos probabilísticos, reduciendo al mismo tiempo el conocimiento que éste deba tener acerca de la teoría de probabilidad (Kadane y Wolfson, 1998).
-
+Dado que el fin de la elicitación es representar la opinión del experto que está siendo elicitado, cualquier intento de validación deberá utilizar como datos únicamente otras declaraciones de fe por ese experto, pues el conocimiento se encuentra en la cabeza del experto, y no puede ser medido fácilmente (O'Hagan, 2005). Ahora, más allá de estas componentes, el principal criterio para validar un proceso de elicitación es el sentido práctico. Estos métodos se diferencian de otros, al no tratar de especificar que las estimaciones hechas por el experto son "correctas". Todas las estimaciones auto consistentes o coherentes son admisibles siempre y cuando el experto sienta que correspondan con sus juicios, entonces toda vez que el método cumpla los criterios matemáticos básicos de coherencia e involucre algunas pruebas de fiabilidad, es un buen método, obviamente sin perder de vista que lo deseable en un proceso de elicitación es que sea lo más fácil posible para los expertos expresar sus creencias en términos probabilísticos, reduciendo al mismo tiempo el conocimiento que éste deba tener acerca de la teoría de probabilidad (Kadane y Wolfson, 1998).
 
 <br>
-
 
 ## Tipo de elicitación a utilizar
 
 **Elicitación gráfica a mano alzada** Está basada en una gráfica que contiene expresiones verbales que miden el grado de incertidumbre que el experto tiene sobre un determinado valor. Es decir, en el "eje x" se le plantean valores posibles que puede tomar el parámetro a estudiar y en el "eje y" se presentan expresiones verbales las cuales entre más alto generan mayor nivel de seguridad de tal manera que el experto para cada valor en el "eje x" le debe asignar una expresión verbal del "eje y" y mediante esto construir una distribución del respectivo parámetro bajo estudio.
-
 
 (Volver a justificar los años elegidos para elicitar)
 
@@ -341,12 +364,12 @@ kable(data.frame(Altura = c(0,5,15,20,35,50,60,75,90,95,100), Expresión = c("To
   kable_paper(full_width = F)
 ```
 
-
-
 **Plantilla de elicitación para los precios de oferta de automoviles mazda 3 sedan modelo 2012**
 
 <center>
-![](Imagenes_elicitaciones/Plantillas final_2012.png)
+
+![](Imagenes_elicitaciones/Plantillas%20final_2012.png)
+
 </center>
 
 <hr>
@@ -354,12 +377,12 @@ kable(data.frame(Altura = c(0,5,15,20,35,50,60,75,90,95,100), Expresión = c("To
 **Plantilla de elicitación para los precios de oferta de automoviles mazda 3 sedan modelo 2016**
 
 <center>
-![](Imagenes_elicitaciones/Plantillas final_2016.png)
+
+![](Imagenes_elicitaciones/Plantillas%20final_2016.png)
+
 </center>
 
-
 <br>
-
 
 ## Identificación y Contratación del experto
 
@@ -367,12 +390,17 @@ El perfil de experto debe ser una persona que actualmente se dedica a la compra 
 
 El experto seleccionado es alguien cercano a uno de los investigadores, el cual de antemano se tiene conocimiento de la larga experiencia que tiene en el campo, por lo tanto sin lugar a dudas era el experto indicado.
 
+<h3>
 
-<h3> <center> Biografia del experto </center> </h3>
+<center>
 
+Biografia del experto
+
+</center>
+
+</h3>
 
 <br>
-
 
 ## Diseño y validación de preguntas
 
@@ -380,63 +408,55 @@ Las preguntas que se le plantearon al experto durante el proceso de elicitación
 
 Al inicio se plantean preguntas para la construcción mental de la distribución, como:
 
-* ¿Cual es el precio promedio de un mazda 3 modelo 2012 y modelo 2016?
+-   ¿Cual es el precio promedio de un mazda 3 modelo 2012 y modelo 2016?
 
-* ¿Cual es el precio del mazda 3 modelo 2012 y modelo 2016 más economico que ha vendido?
+-   ¿Cual es el precio del mazda 3 modelo 2012 y modelo 2016 más economico que ha vendido?
 
-* ¿Cual es el precio del mazda 3 modelo 2012 y modelo 2016 más costoso que ha vendido?
+-   ¿Cual es el precio del mazda 3 modelo 2012 y modelo 2016 más costoso que ha vendido?
 
 <br>
 
 Luego durante el proceso de elicitación se le pregunta más puntualmente:
 
+1.  ¿Considera que un precio determinado es el adecuado para un mazda 3 sédan modelo 2012?
 
-1. ¿Considera que un precio determinado es el adecuado para un mazda 3 sédan modelo 2012?
-
-
-2. ¿Considera que un precio determinado es el adecuado para un mazda 3 sédan modelo 2016?
-
+2.  ¿Considera que un precio determinado es el adecuado para un mazda 3 sédan modelo 2016?
 
 <br>
-
 
 ## Recomendaciones que se tuvieron en cuenta a la hora de elicitar
 
-* La opinión del experto es la más valiosa para elicitar. 
+-   La opinión del experto es la más valiosa para elicitar.
 
-* Al experto se les debe pedir que expresen su opinión sobre cantidades observables.
+-   Al experto se les debe pedir que expresen su opinión sobre cantidades observables.
 
+-   Al experto no se le debe pedir estimaciones de los momentos de una distribución.
 
-* Al experto no se le debe pedir estimaciones de los momentos de una distribución. 
+-   Hay que proporcionarle retroalimentación frecuentemente durante el proceso de elicitación.
 
-* Hay que proporcionarle retroalimentación frecuentemente durante el proceso de elicitación.
+-   El objetivo es elicitar una distribución que represente el conocimiento presente del experto, y es útil tener un resumen sobre cuál es la justificación de este conocimiento.
 
-* El objetivo es elicitar una distribución que represente el conocimiento presente del experto, y es útil tener un resumen sobre cuál es la justificación de este conocimiento.
+-   Cualquier interés personal o financiero que el experto pueda tener en las inferencias o decisiones que dependerían (aun marginalmente) en la distribución del experto, debe ser declarado.
 
-* Cualquier interés personal o financiero que el experto pueda tener en las inferencias o decisiones que dependerían (aun marginalmente) en la distribución del experto, debe ser declarado.
+-   Debe proporcionarse un entrenamiento para familiarizar al experto con las interpretaciones probabilísticas y tanto con sus conceptos y propiedades que se requieran en la elicitación.
 
+-   Es útil correr un ejercicio de elicitación ficticia para proporcionar práctica en el protocolo que el facilitador se propone utilizar.
 
-* Debe proporcionarse un entrenamiento para familiarizar al experto con las interpretaciones probabilísticas y tanto con sus conceptos y propiedades que se requieran en la elicitación.
+-   Un registro debe llevarse de la elicitación. Este debe idealmente contener todas las preguntas que fueron realizadas por el facilitador junto con las respuestas del experto, también como el proceso con el que se ajustó la distribución de probabilidad con estas respuestas.
 
-* Es útil correr un ejercicio de elicitación ficticia para proporcionar práctica en el protocolo que el facilitador se propone utilizar.
-
-* Un registro debe llevarse de la elicitación. Este debe idealmente contener todas las preguntas que fueron realizadas por el facilitador junto con las respuestas del experto, también como el proceso con el que se ajustó la distribución de probabilidad con estas respuestas.
-
-* Se tuvieron en cuenta una serie de mejores prácticas a través de las cuales se puede obtener información tan rigurosa y científica como sea posible para minimizar los sesgos cognitivos que tienden a tener los expertos al hacer juicios probabilísticos las cuales son presentadas por O’Hagan (2019).
+-   Se tuvieron en cuenta una serie de mejores prácticas a través de las cuales se puede obtener información tan rigurosa y científica como sea posible para minimizar los sesgos cognitivos que tienden a tener los expertos al hacer juicios probabilísticos las cuales son presentadas por O'Hagan (2019).
 
 <br>
-
 
 ### Roles en el proceso de elicitación
 
-- Para realizar este proceso hay que tener en cuenta los dos roles que se presentan que son de facilitador y experto:
+-   Para realizar este proceso hay que tener en cuenta los dos roles que se presentan que son de facilitador y experto:
 
-**Facilitadores: ** En este caso son los analistas que van a preguntar y guiar en el proceso de elicitación.
+**Facilitadores:** En este caso son los analistas que van a preguntar y guiar en el proceso de elicitación.
 
-**Expertos: ** Especialistas en el campo, es decir, comprador y vendedor de automoviles de segunda escogido para diligenciar las plantillas de elicitaciones.
+**Expertos:** Especialistas en el campo, es decir, comprador y vendedor de automoviles de segunda escogido para diligenciar las plantillas de elicitaciones.
 
 <br>
-
 
 ## Elicitación ficticia
 
@@ -444,38 +464,39 @@ Teniendo en cuenta los roles descritos anteriormente se procede con una de las r
 
 **Es útil correr un ejercicio de elicitación ficticia para proporcionar práctica en el protocolo que el facilitador se propone utilizar.**
 
-
 Mediante esta recomendación los dos facilitadores encargados de la investigación proceden a hacer una elicitación ficticia, en la cual uno de los analistas desempeña el rol de facilitador y el otro el rol de experto y realizan las dos elicitaciones planteadas para este caso de estudio, esta fue registrada mediante un video.
 
 [Elicitación ficticia del sector peluqueros](https://drive.google.com/file/d/1362bVbhGy0ZnYH0_A34PriRkDlcr83er/view?usp=sharing)
 
-
 <div>
-<p style = 'text-align:center;'>
-<iframe width="700" height="394" src="https://drive.google.com/file/d/1362bVbhGy0ZnYH0_A34PriRkDlcr83er/view?usp=sharing" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-</p>
 
+<p style="text-align:center;">
+
+<iframe width="700" height="394" src="https://drive.google.com/file/d/1362bVbhGy0ZnYH0_A34PriRkDlcr83er/view?usp=sharing" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
+
+</div>
+
+</p>
 
 Mediante esta elicitación ficticia se pretende preparar a los dos analistas para desempeñar un buen rol de facilitador, prepararse en las preguntas que se le van a proporcionar a el experto, la información que se le va a otorgar y correcciones que se deban hacer en el proceso de elicitación, como mejorar las plantillas de elicitación y demás anormalidades que se perciban en la prueba ficticia.
 
-
-
 **Los aspectos a mejorar después de realizar la elicitación ficticia son:**
 
--
--
--
+-   
 
+-   
+
+-   
 
 ## Aplicación del Método de Elicitación
 
-_Momento de elicitar a nuestros expertos_
+*Momento de elicitar a nuestros expertos*
 
-* Los resumenes que salen despúes de cada elicitación son sacados a partir de las notas que pudo obtener cada facilitador en todo el proceso.
+-   Los resumenes que salen despúes de cada elicitación son sacados a partir de las notas que pudo obtener cada facilitador en todo el proceso.
 
-
-## Experto 
+## Experto
 
 Este fue elicitado por ambos facilitadores:
 
@@ -485,60 +506,79 @@ A este experto se acudió hasta su casa, en el cual se le pidió la colaboració
 
 A el experto se le explico cómo debía realizar cada uno de los procesos de elicitación, se le dieron las pautas y toda la información necesaria para ayudar a guiarlo en su proceso de estimación, el facilitador lo estuvo acompañando aproximadamente 5 horas en las que el experto estuvo analizando con mucha calma todo, luego de eso, se comenzó a la realización del proceso de elicitación el cual fue grabado para que los facilitadores después pudieran hacer uso de este recurso y utilizarlo en su análisis
 
-
 [Proceso de Elicitación Experto en compra y venta de carros de segunda](https://youtu.be/szkTps58MDM)
 
-
 <!-- <div> -->
-<!-- <p style = 'text-align:center;'> -->
-<!-- <iframe width="700" height="394" src="https://www.youtube.com/embed/szkTps58MDM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-<!-- </div> -->
-<!-- </p> -->
 
+<!-- <p style = 'text-align:center;'> -->
+
+<!-- <iframe width="700" height="394" src="https://www.youtube.com/embed/szkTps58MDM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+<!-- </div> -->
+
+<!-- </p> -->
 
 ### Las plantillas de elicitación realizadas por este experto se presentan a continuación:
 
 **Elicitación para el mazda 3 sedan modelo 2012**
 
 <center>
+
 ![](Imagenes_elicitaciones/plantilla_2012.png)
+
 </center>
 
 **Resumen de la elicitación**
 
-
-
 <br>
-
-
 
 **Elicitación para el mazda 3 sedan modelo 2016**
 
 <center>
+
 ![](Imagenes_elicitaciones/plantilla_2016.png)
+
 </center>
 
 **Resumen de la elicitación**
 
-
-
 <br>
-
-
 
 ## Cambios de opinión
 
-
 <br>
-
 
 ## Creación de la distribución Apriori
 
+```{r}
+# Lectura de la base de datos
+library(readxl)
+Datos_experto <- read_excel("Datos_experto.xlsx")
+Datos_experto <- data.frame(Datos_experto)
+```
 
+```{r}
+head(Datos_experto)
+```
 
+## Gráfico de las distribuciones a priori del precio del Mazda 3 para el modelo 2012 y 2016
 
+distribución del precio Mazda 3 modelo 2012
 
+```{r}
+plot(Datos_experto$Precio, Datos_experto$X2012, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="purple", main="Distribución del precio Mazda 3 modelo 2012")
+grid()
+```
 
+distribución del precio Mazda 3 modelo 2016
+
+```{r}
+plot(Datos_experto$Precio, Datos_experto$X2016, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="blue", main="Distribución del precio Mazda 3 modelo 2016")
+grid()
+```
+
+```{r}
+```
 
 
 
