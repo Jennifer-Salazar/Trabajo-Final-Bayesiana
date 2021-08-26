@@ -809,13 +809,33 @@ kable(df_parametros, col.names = c("β₀", "β₁", "σ²"), caption = "Paramet
   scroll_box(width = "100%", height = "200px")
 ```
 
+**Gráfica de la distribución del beta_0**
+
+```{r fig.align="center"}
+hist(df_parametros$beta_0, xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0])), col="cyan3", freq = FALSE, ylim = c(0, 0.000099))
+lines(density(df_parametros$beta_0), lwd=1.5)
+grid()
+```
+**Gráfica de la distribución del beta_1**
+
+```{r fig.align="center"}
+hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1])), col="cyan3", freq = FALSE, ylim = c(0, 0.20))
+lines(density(df_parametros$beta_1), lwd=1.5)
+grid()
+```
+
+**Gráfica de la distribución del sigma**
+
+```{r fig.align="center"}
+hist(df_parametros$sigma_2, xlab='sigma_2', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2)), col="cyan3", freq = FALSE)
+lines(density(df_parametros$sigma_2), lwd=1.5)
+grid()
+```
 
 
-
-
-
-
-
+```{r}
+var(df_parametros)
+```
 
 
 
