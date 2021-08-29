@@ -9,7 +9,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 <center>
@@ -527,7 +527,7 @@ A el experto se le explico cómo debía realizar cada uno de los procesos de eli
 
 <center>
 
-![](Imagenes_elicitaciones/plantilla_2012.png)
+![](Imagenes_elicitaciones/Plantillas final_2012_elicitada.png)
 
 </center>
 
@@ -539,7 +539,7 @@ A el experto se le explico cómo debía realizar cada uno de los procesos de eli
 
 <center>
 
-![](Imagenes_elicitaciones/plantilla_2016.png)
+![](Imagenes_elicitaciones/Plantillas final_2016_elicitada.png)
 
 </center>
 
@@ -811,49 +811,234 @@ kable(df_parametros, col.names = c("β₀", "β₁", "σ²"), caption = "Paramet
 
 **Gráfica de la distribución del beta_0**
 
-```{r fig.align="center"}
-hist(df_parametros$beta_0, xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0])), col="cyan3", freq = FALSE, ylim = c(0, 0.000099))
+```{r fig.align="center", echo=FALSE}
+hist(df_parametros$beta_0, xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
 lines(density(df_parametros$beta_0), lwd=1.5)
 grid()
 ```
+
+<br>
+
 **Gráfica de la distribución del beta_1**
 
-```{r fig.align="center"}
-hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1])), col="cyan3", freq = FALSE, ylim = c(0, 0.20))
+```{r fig.align="center", echo=FALSE}
+hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
 lines(density(df_parametros$beta_1), lwd=1.5)
 grid()
 ```
 
+<br>
+
 **Gráfica de la distribución del sigma**
 
-```{r fig.align="center"}
-hist(df_parametros$sigma_2, xlab='sigma_2', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2)), col="cyan3", freq = FALSE)
+```{r fig.align="center", echo=FALSE}
+hist(df_parametros$sigma_2, xlab='sigma_2', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
 lines(density(df_parametros$sigma_2), lwd=1.5)
 grid()
 ```
 
 
+<br>
+
+## Cálculo de la distribución apriori
+
+Se intenta aproximar la distribución apriori del experto a un modelo teórico:
+
+$$\xi(\beta_0, \beta_1, \sigma^2) \approx Normal \times Gamma~Inversa$$
+
+Para realizar el calculo de la distribución normal se procede a calcular el vector de medias y la matriz de varianza y covarianzas para los betas, las cuales se usaran como parametros para la estimación de la distribución normal, por otro lado, mediante el vector de varianzas estimados, se construyen los parámetros asociados a la gamma inversa.
+
+**Media de los** $\beta$
+
+```{r, echo=FALSE}
+media <- colMeans(df_parametros[,-3])
+```
+
+$$\mu_\beta=
+\begin{bmatrix}
+`r media[1]` \\
+`r media[2]` \\
+\end{bmatrix}$$
+
+
+**Matriz de varianzas y covarianzas asociada a los** $\beta$
+
+
+
+```{r, echo = FALSE}
+var <- var(df_parametros[,-3])
+```
+
+$$\Sigma_\beta=
+\begin{bmatrix}
+`r var[1,1]` & `r var[1,2]`\\
+`r var[2,1]` & `r var[2,2]`\\
+\end{bmatrix}$$
+
+
+
+**Matriz de varianzas y covarianzas inversa o matriz de precisión asociada a los** $\beta$
+
+
+
+```{r, echo=FALSE}
+precision <- solve(var(df_parametros[,-3]))
+```
+
+
+$$\Sigma^{-1}_\beta=
+\begin{bmatrix}
+`r precision[1,1]` & `r precision[1,2]`\\
+`r precision[2,1]` & `r precision[2,2]`\\
+\end{bmatrix}$$
+
+
+
+
+<br>
+
+#### Estimación parametros Gamma Inversa MM como apriori para $\sigma^2$
+
+
+```{r, echo=FALSE}
+m<-mean(df_parametros[,3])
+v<-var(df_parametros[,3])
+alfa<-m^2/v+2
+beta<-m*(m^2/v+1)
+
+```
+
+
+$$\alpha_0 = `r alfa`$$
+
+$$\gamma_0 = `r beta`$$
+
+
+<br>
+
+**Distribución apriori de los precios de oferta del mazda 3**
+
+
+```{r, echo=FALSE}
+# años <- sample(seq(2003, 2022), 1000, replace = T)
+# error <- rnorm(1000, mean=0, sd=sqrt(mean(varianza)))
+# precio <- media[1]+media[2]*años + error
+```
+
+
+
+```{r, echo=FALSE}
+library(MVN)
+library(MASS)
+library(invgamma)
+normal <- mvrnorm(1000,media,var)
+gamma_inversa <- rinvgamma(1000, alfa, rate = beta)
+
+apriori <- normal*gamma_inversa
+```
+
+
+```{r fig.align="center", echo=FALSE}
+hist(apriori, xlab='apriori', ylab='Densidad', main="Apriori", col="cyan3", freq = FALSE)
+lines(density(apriori), lwd=1.5)
+grid()
+```
+
+
+```{r, echo=FALSE}
+# betas <- df_parametros[,-3]
+# varianza <- df_parametros[,3]
+# (((1/varianza)^(alfa+1.5))*exp(-(1/df_parametros[,3])*(alfa+(1/2)*t(betas-media)*var*(betas-media))))
+```
+
+
+<br>
+
+<hr>
+
+## Análisis de la muestra
+
+
+Se realiza una busqueda en paginas de internet en donde se realizan ventas de carros de segunda (usados) en donde cada dueño coloca el respectivo precio de oferta que considera adecuado para su automovil, se extrae una muestra de precios del mazda 3 modelo 2012 y modelo 2016, cada una de las muestras son de tamaño 15 y son presentadas a continuación:
+
+```{r, echo = FALSE}
+muestra <- read_excel("muestra.xlsx")
+kable(muestra, row.names = F, caption = "Muestra extraida a partir de internet") %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+
+```{r, echo = FALSE}
+precios_2012 <- data.frame(muestra[muestra$Año==2012,])
+precios_2016 <- data.frame(muestra[muestra$Año==2016,])
+
+```
+
+
+
+**Promedio de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
+
+
 ```{r}
-var(df_parametros)
+promedio_2012 <- mean(precios_2012[,2])
+promedio_2016 <- mean(precios_2016[,2])
+
+promedio <- data.frame(promedio_2012/1000000, promedio_2016/1000000)
+  
+kable(promedio, row.names = F, col.names = c("Promedio modelo 2012", "Promedio modelo 2016"),caption = "Promedio en millones de pesos de los precios de oferta extraidos de la muestra de internet") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+<br>
+
+**Desviación de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
+
+
+```{r}
+desviacion_2012 <- sd(precios_2012[,2])
+desviacion_2016 <- sd(precios_2016[,2])
+
+desviacion <- data.frame(desviacion_2012/1000000, desviacion_2016/1000000)
+  
+kable(desviacion, row.names = F, col.names = c("Desviacion modelo 2012", "desviacion modelo 2016"),caption = "Desviacion en millones de pesos de los precios de oferta extraidos de la muestra de internet") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+**Cuantiles de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
+
+
+```{r}
+cuantil_2012 <- summary(precios_2012)[,2]
+cuantil_2016 <- summary(precios_2016)[,2]
+
+cuantil <- data.frame(cuantil_2012, cuantil_2016)
+  
+kable(cuantil, row.names = F, col.names = c("Cuantil modelo 2012", "Cuantil modelo 2016"),caption = "Cuantil de los precios de oferta extraidos de la muestra de internet") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
 ```
 
 
 
 
+**Distribución de los precios de oferta para el mazda 3 modelo 2012 y 2016 extraido a partir de la muestra de internet**
 
 
 
+```{r}
+par(mfrow=c(1,2))
+hist(precios_2012[,2]/1000000, xlab='Precios', ylab='Densidad', main="Distribución de los precios de oferta en millones \n de pesos modelo 2012 (muestra)", col="cyan3", freq = FALSE, cex.main=0.7)
+lines(density(precios_2012[,2]/1000000), lwd=1.5)
+grid()
 
-
-
-
-
-
-
-
-
-
-
-
+hist(precios_2016[,2]/1000000, xlab='Precios', ylab='Densidad', main="Distribución de los precios de oferta en millones \n de pesos modelo 2016 (muestra)", col="cyan3", freq = FALSE, cex.main=0.7)
+lines(density(precios_2016[,2]/1000000), lwd=1.5)
+grid()
+```
 
 
