@@ -973,10 +973,11 @@ kable(muestra, row.names = F, caption = "Muestra extraida a partir de internet")
 ```{r, echo = FALSE}
 precios_2012 <- data.frame(muestra[muestra$Año==2012,])
 precios_2016 <- data.frame(muestra[muestra$Año==2016,])
-
 ```
 
+<br>
 
+### Análisis descriptivo de la muestra
 
 **Promedio de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
 
@@ -1040,5 +1041,24 @@ hist(precios_2016[,2]/1000000, xlab='Precios', ylab='Densidad', main="Distribuci
 lines(density(precios_2016[,2]/1000000), lwd=1.5)
 grid()
 ```
+
+
+Modelo de regresión asociado a la muestra:
+
+
+```{r}
+modelo_muestra <- lm(Precio~Año, data=muestra)
+
+library(latex2exp)
+plot(muestra$Año, muestra$Precio/1000000, xlab="Año", ylab="Precio en millones de pesos", pch=19, col="cyan4", main="Modelo de regresión lineal asociado a la muestra")
+abline(coef(modelo_muestra)/1000000, col="purple")
+legend('topleft', legend="Precio = -9222.394667 + 4.600667xAño")
+grid()
+```
+
+
+
+
+
 
 
