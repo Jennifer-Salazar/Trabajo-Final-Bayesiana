@@ -5,8 +5,47 @@ author:
 - "Jennifer Salazar Galvis"
 - "Juan Esteban Sánchez Pulgarin"
 date: "1 de septiembre del 2021"
-output: html_document
+output:
+  rmdformats::readthedown
 ---
+
+<style>
+p{
+    text-align: justify;
+}
+
+#postamble .author {
+    font-size: 10px;
+}
+
+#postamble .date {
+    font-size: 10px;
+}
+
+#postamble {
+    color: white;letra
+    background: #0087BB; fondo del titulo 
+    border-top: solid 0px #211103;
+}
+
+#toc {
+    background-color: #0087BB; color de la mitad
+}
+
+#sidebar a:hover {
+    color:#0087BB; letra de arriba
+    background-color: #9F2042;
+    cursor: pointer;
+}
+
+
+#sidebar a{
+  color: white;
+}
+
+</style>
+
+<script language="JavaScript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
