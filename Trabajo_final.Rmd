@@ -403,6 +403,12 @@ Biografia del experto
 
 </h3>
 
+
+El experto tiene aproximadamente 30 años de edad, con una experiencia en el mundo de compra y venta de carros de segunda de más de 5 años, su amor por el oficio es algo que nació desde niño, ya que siempre ha tenido un gusto por los carros y las motos, además, cabe aclarar que su negocio actualmente consiste en la compra y venta no solo de carros, sino también de camionetas (en especial toyotas) y de motos. El negocio empezó, cuando éste le dieron una moto en forma de pago de un dinero que le debían, pero como ya disponía de otra moto y no necesitaba dos, su salida era vender la moto que le habían acabado de dar, lo cual se le hizo fácil venderla y considero que fue un buen negocio, lo que lo llevó a pensar que no era una mala idea e incluso se le abrio la idea de volver a intentarlo, y con esto analizo que  realmente era un negocio rentable. Hasta el día de hoy su negocio consiste principalmente en comprar un vehículo, organizarlo, dejarlo en las mejores condiciones posibles y venderlo, con el fin de que el precio de este aumente de manera razonable. Realmente al experto le gusta dedicarse a esto, es algo que de verdad lo motiva, lo proyecta para su vida a largo plazo y de alguna manera u otra es gracias a esto que tiene una economía muy estable, dado que es el único oficio al que se ha dedicado a lo largo de su vida, además, él considera que tiene una alta experiencia en el tema, que es algo en lo que se desenvuelve bien y espera seguir mejorando, incluso, es un oficio del cual ha aprendido mucho, como examinar correctamente el estado de un vehículo, además, de que el mismo realiza  todo el proceso de traspaso de papeles del vehículo y demás aspecto que se deban tener en cuenta a la hora de realizar una compra o venta de un carro de segunda.
+
+Además, el experto constantemente cambia de vehículo y se debe al gusto que tiene por estos y por la sensación de descubrir cada vez mejores automóviles, además de que el experto tiene una gran familia conformada por una niña de aproximadamente 3 años de edad,, su esposa y un bebé que está en camino y mediante esto destaca su gusto por pasear, salir con su familia incluyendo sus padres, de ahí nace el interés de tener un muy buen automóvil y que mejor que hacerlo cuando sabe tanto del negocio y puede darse el lujo de aprovechar grandes oportunidades y adquirir su propio medio de transporte, el cual esté en las mejores condiciones posibles para su gusto; incluso destaca que en estos momentos desea un carro más grande dado que su familia está aumentando y quiere seguir disfrutando de lo que le gusta que es pasear con su familia en su propio medio de transporte y por esto y muchas cosas más es que destaca el amor del experto por lo que hace.
+
+
 <br>
 
 ## Diseño y validación de preguntas
@@ -469,13 +475,13 @@ Teniendo en cuenta los roles descritos anteriormente se procede con una de las r
 
 Mediante esta recomendación los dos facilitadores encargados de la investigación proceden a hacer una elicitación ficticia, en la cual uno de los analistas desempeña el rol de facilitador y el otro el rol de experto y realizan las dos elicitaciones planteadas para este caso de estudio, esta fue registrada mediante un video.
 
-[Elicitación ficticia del sector peluqueros](https://drive.google.com/file/d/1362bVbhGy0ZnYH0_A34PriRkDlcr83er/view?usp=sharing)
+[Elicitación ficticia del sector peluqueros](https://www.youtube.com/watch?v=ovzBAo133WA)
 
 <div>
 
 <p style="text-align:center;">
 
-<iframe width="700" height="394" src="https://drive.google.com/file/d/1362bVbhGy0ZnYH0_A34PriRkDlcr83er/view?usp=sharing" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe width="700" height="394" src="https://www.youtube.com/watch?v=ovzBAo133WA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 </iframe>
 
@@ -509,17 +515,19 @@ A este experto se acudió hasta su casa, en el cual se le pidió la colaboració
 
 A el experto se le explico cómo debía realizar cada uno de los procesos de elicitación, se le dieron las pautas y toda la información necesaria para ayudar a guiarlo en su proceso de estimación, el facilitador lo estuvo acompañando aproximadamente 5 horas en las que el experto estuvo analizando con mucha calma todo, luego de eso, se comenzó a la realización del proceso de elicitación el cual fue grabado para que los facilitadores después pudieran hacer uso de este recurso y utilizarlo en su análisis
 
-[Proceso de Elicitación Experto en compra y venta de carros de segunda](https://youtu.be/szkTps58MDM)
+[Proceso de Elicitación Experto en compra y venta de carros de segunda](https://youtu.be/y0j3xFTAkjM)
 
-<!-- <div> -->
+<div>
 
-<!-- <p style = 'text-align:center;'> -->
+<p style = 'text-align:center;'>
 
-<!-- <iframe width="700" height="394" src="https://www.youtube.com/embed/szkTps58MDM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="700" height="394" src="https://youtu.be/y0j3xFTAkjM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<!-- </div> -->
+</div>
 
-<!-- </p> -->
+</p>
+
+<hr>
 
 ### Las plantillas de elicitación realizadas por este experto se presentan a continuación:
 
@@ -854,7 +862,7 @@ Para realizar el calculo de la distribución normal se procede a calcular el vec
 media <- colMeans(df_parametros[,-3])
 ```
 
-$$\mu_\beta=
+$$b0=\mu_\beta=
 \begin{bmatrix}
 `r media[1]` \\
 `r media[2]` \\
@@ -862,7 +870,6 @@ $$\mu_\beta=
 
 
 **Matriz de varianzas y covarianzas asociada a los** $\beta$
-
 
 
 ```{r, echo = FALSE}
@@ -886,7 +893,7 @@ precision <- solve(var(df_parametros[,-3]))
 ```
 
 
-$$\Sigma^{-1}_\beta=
+$$B0=\Sigma^{-1}_\beta=
 \begin{bmatrix}
 `r precision[1,1]` & `r precision[1,2]`\\
 `r precision[2,1]` & `r precision[2,2]`\\
@@ -908,55 +915,41 @@ beta<-m*(m^2/v+1)
 
 ```
 
+Parámetro de forma
 
-$$\alpha_0 = `r alfa`$$
+$$c0=\alpha_0 = `r alfa`$$
 
-$$\gamma_0 = `r beta`$$
+Parámetro de escala
+
+$$c1=\gamma_0 = `r beta`$$
 
 
 <br>
 
 **Distribución apriori de los precios de oferta del mazda 3**
 
+La distribución apriori es una función de que tiene como argumentos los parámetros hallados a partir de los modelo de regresión lineal simple ajustados:
 
-```{r, echo=FALSE}
-# años <- sample(seq(2003, 2022), 1000, replace = T)
-# error <- rnorm(1000, mean=0, sd=sqrt(mean(varianza)))
-# precio <- media[1]+media[2]*años + error
-```
+$$\xi(\beta, \sigma^2) = \xi(\beta|\sigma^2)\xi(\sigma^2)=N(\mu_{\beta}, \sigma^2 \Sigma_{\beta})\times IG(\alpha_0, \gamma_0)$$
 
+$$Apriori = f(\beta_0, \beta_1, \sigma^2)=Normal(\beta_0,\beta_1 |b0,B0)\times GammaInv(sigma^2|c0,c1)$$
 
-
-```{r, echo=FALSE}
-library(MVN)
-library(MASS)
-library(invgamma)
-normal <- mvrnorm(1000,media,precision)
-gamma_inversa <- rinvgamma(1000, alfa, rate = beta)
-
-apriori <- normal*gamma_inversa
-```
-
-
-```{r fig.align="center", echo=FALSE}
-hist(apriori, xlab='apriori', ylab='Densidad', main="Apriori", col="cyan3", freq = FALSE)
-lines(density(apriori), lwd=1.5)
-grid()
-```
 
 
 ```{r, echo=FALSE}
-# betas <- df_parametros[,-3]
-# varianza <- df_parametros[,3]
-# (((1/varianza)^(alfa+1.5))*exp(-(1/df_parametros[,3])*(alfa+(1/2)*t(betas-media)*var*(betas-media))))
+# library(MVN)
+# library(MASS)
+# library(invgamma)
+# normal <- dmvnorm(df_parametros[,-3], media, precision)
+# gamma_inversa <- dinvgamma(df_parametros$sigma_2, shape=alfa, rate=beta)
+# apriori <- normal*gamma_inversa
 ```
-
 
 <br>
 
 <hr>
 
-## Análisis de la muestra
+## Extracción de la muestra
 
 
 Se realiza una busqueda en paginas de internet en donde se realizan ventas de carros de segunda (usados) en donde cada dueño coloca el respectivo precio de oferta que considera adecuado para su automovil, se extrae una muestra de precios del mazda 3 modelo 2012 y modelo 2016, cada una de las muestras son de tamaño 15 y son presentadas a continuación:
@@ -1031,7 +1024,7 @@ kable(cuantil, row.names = F, col.names = c("Cuantil modelo 2012", "Cuantil mode
 
 
 
-```{r}
+```{r, echo=FALSE, fig.align="center"}
 par(mfrow=c(1,2))
 hist(precios_2012[,2]/1000000, xlab='Precios', ylab='Densidad', main="Distribución de los precios de oferta en millones \n de pesos modelo 2012 (muestra)", col="cyan3", freq = FALSE, cex.main=0.7)
 lines(density(precios_2012[,2]/1000000), lwd=1.5)
@@ -1043,18 +1036,36 @@ grid()
 ```
 
 
-Modelo de regresión asociado a la muestra:
+**Modelo de regresión asociado a la muestra extraida de internet:**
 
 
-```{r}
+```{r, echo=FALSE, fig.align="center"}
 modelo_muestra <- lm(Precio~Año, data=muestra)
 
 library(latex2exp)
-plot(muestra$Año, muestra$Precio/1000000, xlab="Año", ylab="Precio en millones de pesos", pch=19, col="cyan4", main="Modelo de regresión lineal asociado a la muestra")
+plot(muestra$Año, muestra$Precio/1000000, xlab="Año", ylab="Precio en millones de pesos", pch=19, col="cyan4", main="Modelo de regresión lineal asociado a la muestra de internet")
 abline(coef(modelo_muestra)/1000000, col="purple")
-legend('topleft', legend="Precio = -9222.394667 + 4.600667xAño")
+legend('topleft', legend="Precio = -9222.394667 + 4.600667xAño", col="purple")
 grid()
 ```
+
+
+## Uso de la distribución apriori y la muestra de internet para la contrucción del modelo de regresión lineal simple bayesiano
+
+
+```{r}
+# require(MCMCpack)
+# res <- MCMCregress(Precio~Año, data=muestra, b0=media, B0=round(precision,3), c0=alfa, c1=beta)
+# summary(res)
+```
+
+
+
+
+
+
+
+
 
 
 
