@@ -931,7 +931,7 @@ $$\gamma_0 = `r beta`$$
 library(MVN)
 library(MASS)
 library(invgamma)
-normal <- mvrnorm(1000,media,var)
+normal <- mvrnorm(1000,media,precision)
 gamma_inversa <- rinvgamma(1000, alfa, rate = beta)
 
 apriori <- normal*gamma_inversa
