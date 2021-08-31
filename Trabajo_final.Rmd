@@ -514,18 +514,14 @@ Teniendo en cuenta los roles descritos anteriormente se procede con una de las r
 
 Mediante esta recomendación los dos facilitadores encargados de la investigación proceden a hacer una elicitación ficticia, en la cual uno de los analistas desempeña el rol de facilitador y el otro el rol de experto y realizan las dos elicitaciones planteadas para este caso de estudio, esta fue registrada mediante un video.
 
-[Elicitación ficticia del sector peluqueros](https://www.youtube.com/watch?v=ovzBAo133WA)
+[Elicitación ficticia de los precios de oferta de los mazda 3](https://youtu.be/ovzBAo133WA)
+
+
 
 <div>
-
-<p style="text-align:center;">
-
-<iframe width="700" height="394" src="https://www.youtube.com/watch?v=ovzBAo133WA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
-</iframe>
-
+<p style = 'text-align:center;'>
+<iframe width="642" height="361" src="https://www.youtube.com/embed/ovzBAo133WA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
 </p>
 
 Mediante esta elicitación ficticia se pretende preparar a los dos analistas para desempeñar un buen rol de facilitador, prepararse en las preguntas que se le van a proporcionar a el experto, la información que se le va a otorgar y correcciones que se deban hacer en el proceso de elicitación, como mejorar las plantillas de elicitación y demás anormalidades que se perciban en la prueba ficticia.
@@ -554,17 +550,17 @@ A este experto se acudió hasta su casa, en el cual se le pidió la colaboració
 
 A el experto se le explico cómo debía realizar cada uno de los procesos de elicitación, se le dieron las pautas y toda la información necesaria para ayudar a guiarlo en su proceso de estimación, el facilitador lo estuvo acompañando aproximadamente 5 horas en las que el experto estuvo analizando con mucha calma todo, luego de eso, se comenzó a la realización del proceso de elicitación el cual fue grabado para que los facilitadores después pudieran hacer uso de este recurso y utilizarlo en su análisis
 
-[Proceso de Elicitación Experto en compra y venta de carros de segunda](https://youtu.be/y0j3xFTAkjM)
+[Proceso de Elicitación a un Experto en compra y venta de carros de segunda](https://youtu.be/y0j3xFTAkjM)
 
 <div>
-
 <p style = 'text-align:center;'>
-
-<iframe width="700" height="394" src="https://youtu.be/y0j3xFTAkjM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<iframe width="642" height="361" src="https://www.youtube.com/embed/y0j3xFTAkjM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
 </p>
+
+
+
+
 
 <hr>
 
@@ -617,6 +613,7 @@ kable(Datos_experto, caption = "Datos de las elicitaciones sobre el sobre los pr
 ```
 
 <br>
+
 
 ## Gráfico de las distribuciones dadas por el experto del precio del Mazda 3 para el modelo 2012 y 2016
 
@@ -683,10 +680,10 @@ kable(df_2016, row.names = F, caption = "Medidas de resumen de la distribucón d
 
 ## Simulación inicial para la obtención de la distribución apriori
 
-Con la media y la varianza obtenidas anteriormente de las distribuciones de los precios de oferta de automoviles mazda 3 modelo 2012 y modelo 2016 se procede a extrar una muestra de tamaño **n equivalente** de una distribución normal con las medias y varianzas respectivas.
+Con la media y la varianza obtenidas anteriormente de las distribuciones de los precios de oferta de automoviles mazda 3 modelo 2012 y modelo 2016 se procede a extrar una muestra de tamaño **n equivalente** de una distribución normal con las medias y varianzas respectivas, esto se debe a que estamos bajo el supuesto de que los precios siguen una distribución normal, planteado en el modelo de regresión lineal simple.
 
 
-el n equivalente es obtenido de acuerdo al nivel de experticie del experto en cada una de las distribuciones estimadas:
+el n equivalente es dado por el experto, de acuerdo al nivel de experticie del experto en cada una de las distribuciones estimadas:
 
 <center>
 ![](muestra_equivalente.png)
@@ -821,7 +818,6 @@ Se realiza 1000 veces la extracción de las muestras de tamaño 15 mediante una 
 
 ```{r, echo = FALSE}
 
-
 df_parametros <- data.frame(beta_0 = beta_0 , beta_1 = beta_1, sigma_2 = sigma_2)
 
 for(i in 2:1000){
@@ -833,9 +829,9 @@ for(i in 2:1000){
   df_muestras <- data.frame(Precio=c(muestra_2012, muestra_2016), Año = c(rep(2012, 15), rep(2016, 15)))
   
   modelo <- lm(Precio~Año, data=df_muestras)
-  beta_0 <- round(coef(modelo)[1],2)
-  beta_1 <- round(coef(modelo)[2],2)
-  sigma_2 <- round(summary(modelo)$sigma^2,2)
+  beta_0 <- coef(modelo)[1]
+  beta_1 <- coef(modelo)[2]
+  sigma_2 <- summary(modelo)$sigma^2
   
   parametros <- c(beta_0, beta_1, sigma_2)
   
@@ -848,6 +844,10 @@ row.names(df_parametros) <- NULL
 ```
 
 
+
+<br>
+
+### Tabla de parámetros estimados dados por la distribución apriori
 
 ```{r, echo = FALSE}
 kable(df_parametros, col.names = c("β₀", "β₁", "σ²"), caption = "Parametros de modelo de regresión lineal simple obtenidos mediante simulación",row.names = TRUE) %>%
@@ -893,19 +893,25 @@ Se intenta aproximar la distribución apriori del experto a un modelo teórico:
 
 $$\xi(\beta_0, \beta_1, \sigma^2) \approx Normal \times Gamma~Inversa$$
 
-Para realizar el calculo de la distribución normal se procede a calcular el vector de medias y la matriz de varianza y covarianzas para los betas, las cuales se usaran como parametros para la estimación de la distribución normal, por otro lado, mediante el vector de varianzas estimados, se construyen los parámetros asociados a la gamma inversa.
+Al vector de parámetros $\beta=(\beta_0, \beta_1)$ se le ajusta una distribución normal bivariada por lo tanto se procede a calcular el vector de medias y la matriz de varianza y covarianzas(también su inversa) de los $\beta$, las cuales se usaran como parametros para la estimación de la distribución normal bivariada, por otro lado, a la varianza $\sigma^2$ se le ajusta una gamma inversa, mediante el vector de varianzas estimados, se calculan los parámetros de forma y escala asociados a la gamma inversa.
+
 
 **Media de los** $\beta$
 
 ```{r, echo=FALSE}
 media <- colMeans(df_parametros[,-3])
+media
 ```
 
-$$b0=\mu_\beta=
+$$b0=\hat{\mu}_\beta=
 \begin{bmatrix}
 `r media[1]` \\
 `r media[2]` \\
 \end{bmatrix}$$
+
+La tasa de cambio del precio de oferta de un mazda 3 aumenta aproximadamente 4 millones por cada año que aumenta el modelo del carro.
+
+**Ejemplo:** Se espera que un carro que sea del año 2015 tenga un precio de aproximadamente 43 millones de pesos colombianos $Precio = -8104.095958+4.043284 \times 2015 = 43.121302 \approx 43~millones$
 
 
 **Matriz de varianzas y covarianzas asociada a los** $\beta$
@@ -913,9 +919,10 @@ $$b0=\mu_\beta=
 
 ```{r, echo = FALSE}
 var <- var(df_parametros[,-3])
+var
 ```
 
-$$\Sigma_\beta=
+$$\hat{\Sigma}_\beta=
 \begin{bmatrix}
 `r var[1,1]` & `r var[1,2]`\\
 `r var[2,1]` & `r var[2,2]`\\
@@ -926,13 +933,13 @@ $$\Sigma_\beta=
 **Matriz de varianzas y covarianzas inversa o matriz de precisión asociada a los** $\beta$
 
 
-
 ```{r, echo=FALSE}
 precision <- solve(var(df_parametros[,-3]))
+precision
 ```
 
 
-$$B0=\Sigma^{-1}_\beta=
+$$B0=\hat{\Sigma}^{-1}_\beta=
 \begin{bmatrix}
 `r precision[1,1]` & `r precision[1,2]`\\
 `r precision[2,1]` & `r precision[2,2]`\\
@@ -956,33 +963,22 @@ beta<-m*(m^2/v+1)
 
 Parámetro de forma
 
-$$c0=\alpha_0 = `r alfa`$$
+$$c0=\hat{\alpha}_0 = `r alfa`$$
 
 Parámetro de escala
 
-$$c1=\gamma_0 = `r beta`$$
+$$d0=\hat{\gamma}_0 = `r beta`$$
 
 
 <br>
 
 **Distribución apriori de los precios de oferta del mazda 3**
 
-La distribución apriori es una función de que tiene como argumentos los parámetros hallados a partir de los modelo de regresión lineal simple ajustados:
+La distribución apriori es una función de que tiene como argumentos los parámetros hallados a partir de los modelo de regresión lineal simple $(\beta_0, \beta_1, \sigma^2)$:
 
 $$\xi(\beta, \sigma^2) = \xi(\beta|\sigma^2)\xi(\sigma^2)=N(\mu_{\beta}, \sigma^2 \Sigma_{\beta})\times IG(\alpha_0, \gamma_0)$$
 
-$$Apriori = f(\beta_0, \beta_1, \sigma^2)=Normal(\beta_0,\beta_1 |b0,B0)\times GammaInv(sigma^2|c0,c1)$$
-
-
-
-```{r, echo=FALSE}
-# library(MVN)
-# library(MASS)
-# library(invgamma)
-# normal <- dmvnorm(df_parametros[,-3], media, precision)
-# gamma_inversa <- dinvgamma(df_parametros$sigma_2, shape=alfa, rate=beta)
-# apriori <- normal*gamma_inversa
-```
+$$Apriori = f(\beta_0, \beta_1, \sigma^2)=Normal(\beta_0,\beta_1 |b0,B0)\times GammaInv(sigma^2|c0,d0)$$
 
 <br>
 
@@ -1014,7 +1010,7 @@ precios_2016 <- data.frame(muestra[muestra$Año==2016,])
 **Promedio de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
 
 
-```{r}
+```{r, echo=FALSE}
 promedio_2012 <- mean(precios_2012[,2])
 promedio_2016 <- mean(precios_2016[,2])
 
@@ -1030,7 +1026,7 @@ kable(promedio, row.names = F, col.names = c("Promedio modelo 2012", "Promedio m
 **Desviación de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
 
 
-```{r}
+```{r, echo=FALSE}
 desviacion_2012 <- sd(precios_2012[,2])
 desviacion_2016 <- sd(precios_2016[,2])
 
@@ -1045,7 +1041,7 @@ kable(desviacion, row.names = F, col.names = c("Desviacion modelo 2012", "desvia
 **Cuantiles de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
 
 
-```{r}
+```{r, echo=FALSE}
 cuantil_2012 <- summary(precios_2012)[,2]
 cuantil_2016 <- summary(precios_2016)[,2]
 
@@ -1089,20 +1085,203 @@ grid()
 ```
 
 
+<br>
+
+
 ## Uso de la distribución apriori y la muestra de internet para la contrucción del modelo de regresión lineal simple bayesiano
 
 
 ```{r}
-# require(MCMCpack)
-# res <- MCMCregress(Precio~Año, data=muestra, b0=media, B0=round(precision,3), c0=alfa, c1=beta)
-# summary(res)
+require(MCMCpack)
+modelo <- MCMCregress(Precio~Año, data=muestra, b0=media, B0=precision, c0=alfa, c1=beta)
+summary(modelo)
+
+```
+
+
+<br>
+
+### Tabla de parámetros estimados dados por la distribución posterior
+
+```{r, echo = FALSE}
+require(kableExtra)
+kable(modelo, col.names = c("β₀", "β₁", "σ²"), caption = "Parametros de modelo de regresión lineal simple obtenidos via MCMC") %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+
+<br>
+
+**Gráfica de la distribución del beta_0**
+
+```{r fig.align="center", echo=FALSE}
+hist(modelo[,1], xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
+lines(density(modelo[,1]), lwd=1.5)
+grid()
+```
+
+<br>
+
+**Gráfica de la distribución del beta_1**
+
+```{r fig.align="center", echo=FALSE}
+hist(modelo[,2], xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
+lines(density(modelo[,2]), lwd=1.5)
+grid()
+```
+
+<br>
+
+**Gráfica de la distribución del sigma**
+
+```{r fig.align="center", echo=FALSE}
+hist(modelo[,3], xlab='sigma_2', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+lines(density(modelo[,3]), lwd=1.5)
+grid()
+```
+
+
+<br>
+
+
+
+
+
+
+## Parámetros de la distribución a posteriori
+
+**Media de los** $\beta$
+
+```{r, echo=FALSE}
+b1<-colMeans(modelo[,1:2])
+```
+
+$$b1=\hat{\mu}_\beta=
+\begin{bmatrix}
+`r b1[1]` \\
+`r b1[2]` \\
+\end{bmatrix}$$
+
+
+
+La tasa de cambio del precio de oferta de un mazda 3 aumenta aproximadamente 4 millones por cada año que aumenta el modelo del carro.
+
+**Ejemplo:** Se espera que un carro que sea del año 2015 tenga un precio de aproximadamente 43 millones de pesos colombianos $Precio = -8088.042632+ 4.035309 \times 2015 = 43.105 \approx 43~millones$
+
+<br>
+
+
+**Matriz de varianzas y covarianzas inversa o matriz de precisión asociada a los** $\beta$
+
+
+```{r, echo=FALSE}
+B1<-solve(var(modelo[,1:2]))
+```
+
+
+$$B1=\hat{\Sigma}^{-1}_\beta=
+\begin{bmatrix}
+`r B1[1,1]` & `r B1[1,2]`\\
+`r B1[2,1]` & `r B1[2,2]`\\
+\end{bmatrix}$$
+
+
+
+
+<br>
+
+#### Estimación parametros Gamma Inversa MM como apriori para $\sigma^2$
+
+
+```{r, echo=FALSE}
+m.var1<-mean(modelo[,3])
+v.var1<-var(modelo[,3])
+
+c1<-m.var1^2/v.var1+2
+d1<-m.var1*(c1-1)
+```
+
+Parámetro de forma
+
+$$c1=\hat{\alpha}_0 = `r c1`$$
+
+Parámetro de escala
+
+$$d1=\hat{\gamma}_0 = `r d1`$$
+
+
+<br>
+
+**Comparación de la distribución apriori con la posterior**
+
+```{r, echo=FALSE}
+parametros <- data.frame(beta_0 = c(media[1], b1[1]), beta_1=c(media[2], b1[2]), media_var = c(m, m.var1), varianza_var=c(v, v.var1), alfa = c(alfa, c1), beta=c(beta, d1), row.names = c("Apriori", "Posteriori"))
+kable(parametros, col.names = c("β₀", "β₁", "E(varianza)",  "Var(varianza)", "c", "d"), caption = "Parametros de modelo de regresión lineal Mediante la distribución apriori y la distribución posteriori", row.names = T) %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
 ```
 
 
 
+Conclusión: En base al resultado del promedio del $\beta_0$ y $\beta_1$ que es la tasa de cambio del precio de oferta de los mazda 3 dado el año  hallado a partir de la distribución dada por el experto (distribución apriori) y a partir de la obtenida mediante la muestra y la distribución apriori (distribución posteriori) se ve la gran similaridad entre estas, lo que indica que la estimación de los precios de oferta dados por el experto son demasiado similares a los extraidas en la muestra de internet, lo que indica que el conocimiento del experto da confiabilidad; realmente el cambio se ve en es la varianza que se estima en los modelos de regresión mediante la información dada por el experto y la extraida de internet, lo que indica que la dada por el experto es información más precisa (varianza más pequeña) que la extraida de internet.
+
+
+<hr>
+
+
+**Gráfico de la distribución conjunta entre ** $\beta_0$ **y** $\beta_1$
+
+```{r, echo=FALSE}
+library(ash)
+ab <- matrix( c(0,-13000,8,-3000), 2, 2)
+nbin <- c( 20, 20) # 400 bins
+bins <- bin2(modelo[,c(2,1)], ab, nbin)
+m <- c(5,5)
+f <- ash2(bins,m)
+image(f$x,f$y,f$z, xlab="beta 1", ylab="beta 0")
+contour(f$x,f$y,f$z,add=TRUE)
+```
+
+
+Densidad de tipo no parámetrica: como es de esperarse, se parece a los contornos proveniente de una normal bivariada.
+
+
+## Conclusiones y Recomendaciones
+
+<br>
+<hr>
+
+# Referencias
+
+
+* C. (2020, 10 julio). ¿Cuánto ganan los propietarios de la barbería mensualmente / anualmente? ExoNegocios. https://exonegocios.com/cuanto-ganan-los-propietarios-de-la-barberia-mensualmente-anualmente/
 
 
 
+* Flórez Rivera, A. (2014). ELICITACIÓN DE UNA DISTRIBUCIÓN SUBJETIVA DEL VECTOR DE PARÁMETROS PI DE LA DISTRIBUCIÓN MULTINOMIAL (Magister en Estadística). Universidad Nacional de Colombia.
+
+* Garthwaite P., Kadene J. y O’Hagan A., 2005, Statistical Methods for Eliciting Probability Distribu-tions,Journal of the American Statistical Association,Vol. 100, 680-700, No.470.
+
+* James, A., Choy, S. L. & Mengersen, K. (2010), ‘Elicitator: An expert elicitation tool for regression in ecology’, Environmental Modelling & Software 25, 129–145.
+
+* Kadane J., Wolfson L., 1998, Experiencies in Elicitation,The Statistician,Vol. 47, 3-19, No. 1.
+
+
+* O’Hagan, A. (2019), ‘Expert knowledge elicitation: Subjective but scientific’, The American Statistician 73(sup1), 69–81.
+
+* Seynaeve, D., Varewyck, M. & Verbeke, T. (2019), ‘Extension of the montecarlo web application and expert knowledge elicitation web application’, EFSA Supporting Publications 16(6), 1630E.
+
+* Van Lenthe J., 1993, A blueprint of ELI: A new method for eliciting subjective probability distributions,Behavior Research Methods, Instruments, & Computers,Vol 25, 425-433, No. 4.
+
+
+
+<br>
+<hr>
+
+## Códigos de R utilizados
 
 
 
