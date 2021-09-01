@@ -284,65 +284,80 @@ En la actualidad el Mazda 3 dispone de carrocería de dos volúmenes, un hatchba
 **Mazda 3 en la actualidad** 
 </p>
 
-El placer de conducir un Mazda se eleva aún más en el Mazda3 sedán. La reducción de vibraciones y la excelente insonorización, afectados por todos los ocupantes tengan un viaje más confortable.
+El placer de conducir un Mazda se eleva aún más en el Mazda 3 sedán. La reducción de vibraciones y la excelente insonorización, afectados por todos los ocupantes tengan un viaje más confortable.
 
 El Mazda3 de nueva generación está equipado en todas sus versiones con:
 
-* sistema de control G-Vectoring Plus (GVC +)
+* Sistema de control G-Vectoring Plus (GVC +)
 
-* Mazda Connect, muestra información múltiple de 7 ”que se ubica en la parte central del tablero de instrumentos".
+* Mazda Connect, muestra información múltiple que se ubica en la parte central del tablero de instrumentos.
 
-* computador de abordo, luces delanteras LED Encendido por botón, apagado automático de luces y espejos retrovisores exteriores abatibles eléctricamente de forma automática.
+* Computador de abordo, luces delanteras LED Encendido por botón, apagado automático de luces y espejos retrovisores exteriores abatibles eléctricamente de forma automática.
 
-* Desde las versiones Touring, Mazda3 cuenta con Apertura inteligente de puertas.
-
-* Sensores de parqueo delanteros y traseros.
+* Desde las versiones Touring, Mazda3 cuenta con Apertura inteligente de puertas, sensores de parqueo delanteros y traseros.
 
 * Cámara de reversa
 
 * Asientos traseros con descansabrazos central
 
-* aire acondicionado automático dual y limpiaparabrisas delantero automático (sensor lluvia).
+* Aire acondicionado automático dual y limpiaparabrisas delantero automático (sensor lluvia).
 
-* las versiones Grand Touring y Grand Touring LX están disponibles con: Techo corredizo “Sunroof”, sistema de sonido BOSE® con 12 parlantes y Pantalla Activa de Conducción de proyección en el panorámico.
+* Las versiones Grand Touring y Grand Touring LX están disponibles con: Techo corredizo “Sunroof”, sistema de sonido BOSE® con 12 parlantes y Pantalla Activa de Conducción de proyección en el panorámico.
 
 <br>
 
 ##### Elección del modelo de carro particular:
 
-Dado que se debe utilizar un carro en particular vamos a concentrar este estudio en el mazda 3 sedán (4 puertas) de caja manual el cual es el más común en el mercado y crea un mayor interés a los investigadores y al experto, además de ello como se realiza el planteamiento de un modelo de regresión lineal simple para la modelación de los precios de oferta solo es necesario tener en cuenta dos años de carros los cuales fueron escogidos el mazda 3 sedan modelo 2012 y modelo 2016, que fueron escogidos por el experto, porque desde su perspectiva son los dos modelos de mazda 3 de segunda más comerciales.
-
-
-```{r, out.width="0.3\\linewidth", include=TRUE, fig.align="center", fig.cap=c("your caption"), echo=FALSE}
-knitr::include_graphics("Imagenes_elicitaciones/ficha_tecnica_2012.pdf")
-```
-
-
-(poner imagenes de Fichas tecnicas del 2012 y 2016)
+Dado que se debe utilizar un carro en particular vamos a concentrar este estudio en el mazda 3 sedán (4 puertas) de caja manual el cual es el más común en el mercado y crea un mayor interés a los investigadores y al experto, además de ello como se realiza el planteamiento de un modelo de regresión lineal simple para la modelación de los precios de oferta solo es necesario tener en cuenta dos años de carros los cuales fueron escogidos el mazda 3 sedán modelo 2012 y modelo 2016, que fueron escogidos por el experto, porque desde su perspectiva son los dos modelos de mazda 3 de segunda más comerciales.
 
 <br>
 
-**¿Por qué hacemos uso de la estadística Bayesiana para estudiar los precios de los distintos modelos de un mazda 3?**
+### Ficha técnica Mazda 3 modelo 2012
+
+<iframe src="https://docs.google.com/viewer?srcid=1HcRAgfuhaeSvF8iD_tgbN2q2gcOZPd3U&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="680px"></iframe>
+
+<hr>
+
+### Ficha técnica Mazda 3 modelo 2016
+
+<iframe src="https://docs.google.com/viewer?srcid=1lUQxSbIntCsguPjHesIrXECogT2Sv5ul&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="680px"></iframe>
+
+
+<br>
+<hr>
+
+### ¿Por qué hacemos uso de la estadística Bayesiana para estudiar los precios de los distintos modelos de un mazda 3?
 
 Una de las principales limitaciones de la estadística clásica o frecuentista es que no permite incorporar de manera coherente en el análisis estadístico la información extra-muestral o información previa que provenga de expertos en el área disponible, ya que se apoya únicamente en datos muestrales observados y en muchas casos esta información adicional puede ser de mucha utilidad, ya que viene directamente de personas que tienen una experiencia y experticia en el tema, la cual puede tener una perspectiva más acertada del fenómeno que se está estudiando.
 
-En la práctica, a menudo la incertidumbre o el desconocimiento sobre el tema de interés hace que la toma de decisiones sea en la mayoría de los casos muy compleja, por lo cual es común que las decisiones se apoyan en expertos que proporcionan información en forma de estimaciones de probabilidad con respecto a dichas incertidumbres. Las distribuciones de probabilidad son una de las representaciones más usadas de la incertidumbre que se tiene acerca de un tema de interés. Dichas distribuciones no son más que expresiones formales de lo que piensa o sabe un experto, por lo tanto, no es adecuado juzgarlas como buenas o malas. La transformación mental de conocimiento subjetivo en una distribución de probabilidad es una tarea difícil (van Lenthe, 1993) y se deben tener en cuenta algunas técnicas para la captura de la información, teniendo siempre en mente que es un proceso extremadamente delicado; En este caso puntual vamos a hacer uso de las técnicas popularmente utilizadas en la estadística Bayesiana llamadas elicitaciones (distribuciones no informativas).
+En la práctica, a menudo la incertidumbre o el desconocimiento sobre el tema de interés hace que la toma de decisiones sea en la mayoría de los casos muy compleja, por lo cual es común que las decisiones se apoyan en expertos que proporcionan información en forma de estimaciones de probabilidad con respecto a dichas incertidumbres. Las distribuciones de probabilidad son una de las representaciones más usadas de la incertidumbre que se tiene acerca de un tema de interés. Dichas distribuciones no son más que expresiones formales de lo que piensa o sabe un experto, por lo tanto, no es adecuado juzgarlas como buenas o malas. La transformación mental de conocimiento subjetivo en una distribución de probabilidad es una tarea difícil (van Lenthe, 1993) y se deben tener en cuenta algunas técnicas para la captura de la información, teniendo siempre en mente que es un proceso extremadamente delicado; En este caso puntual vamos a hacer uso de las técnicas popularmente utilizadas en la estadística Bayesiana llamadas elicitaciones.
+
+La elicitación de la cual se hará uso es llamada: "Elicitación gráfica a mano alzada".
 
 El proceso de elicitación debe enfrentar un protocolo cuidadoso y profesional que le permita al analista documentar el proceso. En general, dicho protocolo no difiere mucho de los principios estándares de recolección de datos, donde se espera que el analista asegure la validez científica de sus datos.
 
-En este estudio particular se hará uso de la elicitación llamada: "Elicitación gráfica a mano alzada".
+
 
 Todo el proceso de elicitación requiere la selección de los expertos, la preparación de las preguntas, el entrenamiento de los expertos, las entrevistas, el análisis, la escritura de las justificaciones, documentación, etc.
 
-Las elicitaciones como tal nos permiten hallar una distribución a priori para un parámetro el cual se está estudiando, de tal manera que mediante una distribución se pueda representar el conocimiento que tiene el experto bajo el problema de estudio, por lo tanto en este estudio el parámetro al cual se le quiere hallar su distribución a priori es el $\beta$ asociado a un modelo de regresión lineal simple, en donde su variable respuesta (dependiente) es el precio de oferta del vehículo y la covariable(variable independiente) es el año (modelo del vehículo) por lo tanto el parámetro $\beta$ representa la tasa de cambio del precio del Mazda 3 por un cambio en el año de este.
+Las elicitaciones como tal nos permiten hallar una distribución a priori para un parámetro el cual se está estudiando, de tal manera que mediante una distribución se pueda representar el conocimiento que tiene el experto bajo el problema de estudio, por lo tanto en este estudio los parámetros los cuales se le quiere hallar su distribución a priori son los asociado a un modelo de regresión lineal simple, en donde su variable respuesta (dependiente) es el precio de oferta del vehículo y la covariable(variable independiente) es el año (modelo del vehículo).
 
-**El modelo a plantear se presenta a continuación:**
+
+<br>
+
+#### El modelo a plantear se presenta a continuación:
+
+$$Y=\text{Precio de oferta},~~X=\text{Año del vehiculo}$$
 
 $$Y = \beta_0 + \beta_1X + Error$$
 
 $$donde~el~Error \sim Normal (0, \sigma^2)$$
 
+
+
 Además de hallar una distribución a priori de los parámetros asociados a este modelo también se busca hallar una distribución posteriori de estos, la cual hará uso de la distribución a priori mencionada anteriormente y de una muestra, todo esto con el fin de permitir tener una aproximación más acertada de la verdadera tasa de cambio de los precios de oferta de un mazda 3 dado el año del cual provenga el vehículo.
+
+
 
 **Regresión lineal simple en la estadística bayesiana**
 
@@ -354,19 +369,21 @@ En este documento, se propone un técnica para construir una distribución a pri
 
 ## Metodología
 
-Se pretende desarrollar técnicas que permitan estimar el precio de oferta de los automóviles mazda 3 sedan mediante elicitaciones, con estas se pretenden estimar distintas distribuciones de los parámetros de un modelo de regresión lineal simple que tiene como variable respuesta los precios de oferta y variable explicativa año o modelo del carro; todo el proceso para obtener las estimaciones es implementado mediante el software R. El proceso de elicitación es planificado exhaustivamente siguiendo las pautas que el campo ha establecido como adecuadas de manera que el analista pueda llevar registro de todas estimaciones hechas por el experto y brindarle retroalimentación continua durante todo el proceso. Inicialmente se revisan los enfoques y desarrollos actuales para la cuantificación de la incertidumbre o creencias que un "experto" tiene sobre los parámetros a estudiar. Por medio de un proceso de elicitación de ensayo se prepara a los expertos hasta que tenga un entendimiento completo de cómo se desarrolla un proceso de elicitación y para la preparación de los analistas (facilitadores) se realiza lo que se conoce como una elicitación ficticia dado que la elicitación es un proceso complejo que exige al facilitador una serie de habilidades de entrevista y una comprensión razonable del campo en el que se realice la elicitación, de tal manera que ambas partes estén lo suficientemente aptas para realizar el proceso de elicitación. Después de recolectada la información se desarrolla algoritmos para la estimación de distribuciones apriori, en las cuales se desarrollaron procedimientos como: análisis de la distribuciones de probabilidad dadas por los expertos, sacar muestras mediante simulaciones a partir de estas distribuciones teniendo en cuenta el nivel de experiencia del experto, finalmente obteniendo una distribución de densidad promedio (distribución apriori) para cada uno de los parámetro, el cual posteriormente se le realizan intervalos de probabilidad el cual nos permite entender y estimar los distintos parámetros y llegar a una estimación óptima del precio de oferta de los mazda 3 sedan.
+Se pretende desarrollar técnicas que permitan estimar el precio de oferta de los automóviles mazda 3 sedán mediante elicitaciones, con estas se pretenden estimar distintas distribuciones de los parámetros de un modelo de regresión lineal simple que tiene como variable respuesta los precios de oferta y variable explicativa año o modelo del carro; todo el proceso para obtener las estimaciones es implementado mediante el software R. El proceso de elicitación es planificado exhaustivamente siguiendo las pautas que el campo ha establecido como adecuadas de manera que el analista pueda llevar registro de todas estimaciones hechas por el experto y brindarle retroalimentación continua durante todo el proceso. Inicialmente se revisan los enfoques y desarrollos actuales para la cuantificación de la incertidumbre o creencias que un "experto" tiene sobre los parámetros a estudiar. Por medio de un proceso de elicitación de ensayo se prepara a los expertos hasta que tenga un entendimiento completo de cómo se desarrolla un proceso de elicitación y para la preparación de los analistas (facilitadores) se realiza lo que se conoce como una elicitación ficticia dado que la elicitación es un proceso complejo que exige al facilitador una serie de habilidades de entrevista y una comprensión razonable del campo en el que se realice la elicitación, de tal manera que ambas partes estén lo suficientemente aptas para realizar el proceso de elicitación. Después de recolectada la información se desarrolla algoritmos para la estimación de distribuciones apriori, en las cuales se desarrollaron procedimientos como: análisis de la distribuciones de probabilidad dadas por los expertos, sacar muestras mediante simulaciones a partir de estas distribuciones teniendo en cuenta el nivel de experiencia del experto, finalmente obteniendo una distribución de densidad promedio (distribución apriori) para cada uno de los parámetro, el cual nos permite entender los distintos parámetros y llegar a una estimación óptima del precio de oferta de los mazda 3 sedán.
 
-Para el calculo de la distribución apriori se tiene en cuenta el siguiente algoritmo:
+<br>
 
-**Algoritmo de estimación de los parámetros de un modelo de regresión lineal simple:**
+### Algoritmo de estimación de los parámetros de un modelo de regresión lineal simple mediante la estadística bayesiana:
 
-Ahora, presentamos nuestra propuesta de dos pasos. En el primer paso, se obtienen algunos cuantiles de la distribución de la variable de respuesta en el modelo de regresión con respecto a un valor particular de la variable explicativa. En este paso también se obtienen la media, la varianza y el tamaño de muestra equivalente correspondiente. Tenga en cuenta que obtener los cuantiles de una variable aleatoria es más fácil que obtener los parámetros del modelo directamente (Demuynck, 2013).
+Ahora, presentamos nuestra propuesta de tres pasos:
 
-En el segundo paso, se realiza una simulación para generar muestras de la variable de respuesta, considerando sus puntos de diseño correspondientes, con el fin de estimar repetidamente los parámetros del modelo varias veces. Es más fácil para los expertos dar su opinión sobre un valor central que sobre cualquier otro valor en el rango de valores posibles de una variable. Este argumento se basa en el hecho de que a las personas les resulta más fácil describir los eventos que ocurren con más frecuencia que los que son raros. Por ello, se recomienda establecer como puntos de diseño valores cercanos a la media de la variable explicativa. En este punto, se debe evitar cualquier tipo de sesgo (por ejemplo, anclaje, disponibilidad o exceso de confianza) durante la obtención, ya que puede llevar el proceso de obtención por el camino equivocado y cualquier método implementado fallaría en hacer una buena estimación de las distribuciones anteriores. (O'Hagan, 2019).
+En el primer paso, se realizan elicitaciones gráficas a mano alzada para cada uno de los dos años elegidos para el análisis, con el fin de que el experto forme su distribución que refleje su conocimiento de los precios de oferta que se le brindan para cada año, construyendo estas a partir su nivel de seguridad de dichos precios. En este paso también se obtienen la media, la varianza de cada una de las distribuciones formadas por el experto y el tamaño de muestra equivalente que también es dada por éste.
 
-(Agregar lo de la aproximación a la normal por la gamma inversa).
+En el segundo paso, se realiza una simulación mediante la distribución normal (Supuesto bajo el modelo de regresión lineal simple establecido) para generar muestras de la variable de respuesta, considerando sus puntos de diseño correspondientes, con el fin de estimar repetidamente los parámetros del modelo varias veces, para llegar a la estimación de la distribución apriori cuyos parámetros son los del modelo de regresión lineal simple y se pretenden aproximar de la siguiente manera:
 
-Después de obtener de manera correcta la distribución apriori, se realiza los procedimientos adecuados para obtener la distribución posterior, la cual necesita una muestra de precios de carros que es extraída de las páginas de internet que venden carros de segunda; se realiza un análisis descriptivo de estos datos y se hace uso del paquete MCMCpack para determinar un modelo bayesiano y mediante los resultados obtenidos se realiza una interpretación y un análisis para ver que tanto concuerda el conocimiento del experto con la información muestral.
+$$\xi(\beta_0, \beta_1, \sigma^2) \approx Normal \times Gamma~Inversa$$
+
+Después de obtener de manera correcta la distribución apriori, en el tercer paso se realiza los procedimientos adecuados para obtener la distribución posteriori, la cual necesita una muestra de precios de carros que es extraída de las páginas de internet que venden carros de segunda; se realiza un análisis descriptivo de estos datos y se hace uso del paquete **MCMCpack** para determinar un modelo bayesiano y mediante los resultados obtenidos se realiza una interpretación y un análisis para ver que tanto concuerda el conocimiento del experto con la información muestral.
 
 <br>
 
@@ -384,7 +401,7 @@ Después de obtener de manera correcta la distribución apriori, se realiza los 
 
 ## Antecedentes y Preparación
 
-Una de las principales dificultades a la hora de obtener conocimiento experto es seleccionar y formular las preguntas adecuadas de tal manera que los expertos comprendan lo que se está preguntando y proporcionen realmente la información esperada. Para este propósito, se debe preparar cuidadosamente una lista de preguntas. Sin embargo, durante el proceso de elicitación, la estructura de una pregunta podría cambiar ligeramente, siempre que no se altere su significado subyacente. Por lo tanto, se deben examinar todos los métodos de elicitación para identificar el vocabulario apropiado para las preguntas y comparar todas esas características en función de los diferentes parámetros a estimar. En otras palabras, en lugar de utilizar preguntas estructurales en un proceso de elicitación, debemos adaptarlas a cada experto e intentar interactuar con ellos durante el proceso de entrevista / encuesta.
+Una de las principales dificultades a la hora de obtener conocimiento del experto es seleccionar y formular las preguntas adecuadas de tal manera que los expertos comprendan lo que se está preguntando y proporcionen realmente la información esperada. Para este propósito, se debe preparar cuidadosamente una lista de preguntas. Sin embargo, durante el proceso de elicitación, la estructura de una pregunta podría cambiar ligeramente, siempre que no se altere su significado subyacente. Por lo tanto, se deben examinar todos los métodos de elicitación para identificar el vocabulario apropiado para las preguntas y comparar todas esas características en función de los diferentes parámetros a estimar. En otras palabras, en lugar de utilizar preguntas estructurales en un proceso de elicitación, debemos adaptarlas a cada experto e intentar interactuar con ellos durante el proceso de entrevista / encuesta.
 
 Se tendra en cuenta las siguientes preguntas antes de empezar el proceso de elicitación para tener un vinculo con el experto:
 
@@ -415,7 +432,7 @@ En términos de análisis estadístico, elicitación es el proceso de formulaci�
 
 El objetivo de la elicitación entonces es producir una distribución apriori útil que capture la opinión del experto y la integración de sus experiencias, dado que, si un "experto" puede ordenar un conjunto completo de acontecimientos en una forma coherente, entonces la opinión de ese "experto" puede ser representada por una función de probabilidad.
 
-Dado que el fin de la elicitación es representar la opinión del experto que está siendo elicitado, cualquier intento de validación deberá utilizar como datos únicamente otras declaraciones de fe por ese experto, pues el conocimiento se encuentra en la cabeza del experto, y no puede ser medido fácilmente (O'Hagan, 2005). Ahora, más allá de estas componentes, el principal criterio para validar un proceso de elicitación es el sentido práctico. Estos métodos se diferencian de otros, al no tratar de especificar que las estimaciones hechas por el experto son "correctas". Todas las estimaciones auto consistentes o coherentes son admisibles siempre y cuando el experto sienta que correspondan con sus juicios, entonces toda vez que el método cumpla los criterios matemáticos básicos de coherencia e involucre algunas pruebas de fiabilidad, es un buen método, obviamente sin perder de vista que lo deseable en un proceso de elicitación es que sea lo más fácil posible para los expertos expresar sus creencias en términos probabilísticos, reduciendo al mismo tiempo el conocimiento que éste deba tener acerca de la teoría de probabilidad (Kadane y Wolfson, 1998).
+Dado que el fin de la elicitación es representar la opinión del experto que está siendo elicitado, cualquier intento de validación deberá utilizar como datos únicamente otras declaraciones de fe por ese experto, pues el conocimiento se encuentra en la cabeza del experto, y no puede ser medido fácilmente. Ahora, más allá de estas componentes, el principal criterio para validar un proceso de elicitación es el sentido práctico. Estos métodos se diferencian de otros, al no tratar de especificar que las estimaciones hechas por el experto son "correctas". Todas las estimaciones auto consistentes o coherentes son admisibles siempre y cuando el experto sienta que correspondan con sus juicios, entonces toda vez que el método cumpla los criterios matemáticos básicos de coherencia e involucre algunas pruebas de fiabilidad, es un buen método, obviamente sin perder de vista que lo deseable en un proceso de elicitación es que sea lo más fácil posible para los expertos expresar sus creencias en términos probabilísticos, reduciendo al mismo tiempo el conocimiento que éste deba tener acerca de la teoría de probabilidad (Kadane y Wolfson, 1998).
 
 <br>
 
@@ -423,11 +440,11 @@ Dado que el fin de la elicitación es representar la opinión del experto que es
 
 **Elicitación gráfica a mano alzada** Está basada en una gráfica que contiene expresiones verbales que miden el grado de incertidumbre que el experto tiene sobre un determinado valor. Es decir, en el "eje x" se le plantean valores posibles que puede tomar el parámetro a estudiar y en el "eje y" se presentan expresiones verbales las cuales entre más alto generan mayor nivel de seguridad de tal manera que el experto para cada valor en el "eje x" le debe asignar una expresión verbal del "eje y" y mediante esto construir una distribución del respectivo parámetro bajo estudio.
 
-(Volver a justificar los años elegidos para elicitar)
+Recordar: Los años elegidos para el estudio del precio de oferta mediante un proceso de elicitación son el 2012 y 2016.
 
 <br>
 
-#### elicitación gráfica a mano alzada de los precios de oferta de automoviles mazda 3 sedan modelo 2012 y modelo 2016:
+#### Elicitación gráfica a mano alzada de los precios de oferta de automóviles mazda 3 sedán modelo 2012 y 2016:
 
 Los valores para el "eje x" es decir los valores que representan los precios de oferta toman valores de 0 a 150 millones (avanzando de 5 millones de manera equiespaciada) los cuales fueron considerados después de realizar una investigación y de analizar que fuera un rango de valores los cuales consideraran los valores que los expertos pensaban.
 
@@ -439,7 +456,10 @@ kable(data.frame(Altura = c(0,5,15,20,35,50,60,75,90,95,100), Expresión = c("To
   kable_paper(full_width = F)
 ```
 
-**Plantilla de elicitación para los precios de oferta de automoviles mazda 3 sedan modelo 2012**
+
+<br>
+
+**Plantilla de elicitación para los precios de oferta de automóviles mazda 3 sedán modelo 2012**
 
 <center>
 
@@ -449,7 +469,7 @@ kable(data.frame(Altura = c(0,5,15,20,35,50,60,75,90,95,100), Expresión = c("To
 
 <hr>
 
-**Plantilla de elicitación para los precios de oferta de automoviles mazda 3 sedan modelo 2016**
+**Plantilla de elicitación para los precios de oferta de automóviles mazda 3 sedán modelo 2016**
 
 <center>
 
@@ -461,24 +481,17 @@ kable(data.frame(Altura = c(0,5,15,20,35,50,60,75,90,95,100), Expresión = c("To
 
 ## Identificación y Contratación del experto
 
-El perfil de experto debe ser una persona que actualmente se dedica a la compra y venta de carros de segunda, en especial que tenga conocimiento del mazda 3 sédan.
+El perfil del experto debe ser una persona que actualmente se dedica a la compra y venta de carros de segunda.
 
-El experto seleccionado es alguien cercano a uno de los investigadores, el cual de antemano se tiene conocimiento de la larga experiencia que tiene en el campo, por lo tanto sin lugar a dudas era el experto indicado.
-
-<h3>
-
-<center>
-
-Biografia del experto
-
-</center>
-
-</h3>
+El experto seleccionado es alguien conocido por uno de los investigadores, el cual de antemano se tenía conocimiento de la larga experiencia que tiene en el campo, por lo tanto sin lugar a dudas era el experto indicado y fue contactado por redes sociales por los investigadores el cual accedio muy amablemente a colaborar con el estudio.
 
 
-El experto tiene aproximadamente 30 años de edad, con una experiencia en el mundo de compra y venta de carros de segunda de más de 5 años, su amor por el oficio es algo que nació desde niño, ya que siempre ha tenido un gusto por los carros y las motos, además, cabe aclarar que su negocio actualmente consiste en la compra y venta no solo de carros, sino también de camionetas (en especial toyotas) y de motos. El negocio empezó, cuando éste le dieron una moto en forma de pago de un dinero que le debían, pero como ya disponía de otra moto y no necesitaba dos, su salida era vender la moto que le habían acabado de dar, lo cual se le hizo fácil venderla y considero que fue un buen negocio, lo que lo llevó a pensar que no era una mala idea e incluso se le abrio la idea de volver a intentarlo, y con esto analizo que  realmente era un negocio rentable. Hasta el día de hoy su negocio consiste principalmente en comprar un vehículo, organizarlo, dejarlo en las mejores condiciones posibles y venderlo, con el fin de que el precio de este aumente de manera razonable. Realmente al experto le gusta dedicarse a esto, es algo que de verdad lo motiva, lo proyecta para su vida a largo plazo y de alguna manera u otra es gracias a esto que tiene una economía muy estable, dado que es el único oficio al que se ha dedicado a lo largo de su vida, además, él considera que tiene una alta experiencia en el tema, que es algo en lo que se desenvuelve bien y espera seguir mejorando, incluso, es un oficio del cual ha aprendido mucho, como examinar correctamente el estado de un vehículo, además, de que el mismo realiza  todo el proceso de traspaso de papeles del vehículo y demás aspecto que se deban tener en cuenta a la hora de realizar una compra o venta de un carro de segunda.
 
-Además, el experto constantemente cambia de vehículo y se debe al gusto que tiene por estos y por la sensación de descubrir cada vez mejores automóviles, además de que el experto tiene una gran familia conformada por una niña de aproximadamente 3 años de edad,, su esposa y un bebé que está en camino y mediante esto destaca su gusto por pasear, salir con su familia incluyendo sus padres, de ahí nace el interés de tener un muy buen automóvil y que mejor que hacerlo cuando sabe tanto del negocio y puede darse el lujo de aprovechar grandes oportunidades y adquirir su propio medio de transporte, el cual esté en las mejores condiciones posibles para su gusto; incluso destaca que en estos momentos desea un carro más grande dado que su familia está aumentando y quiere seguir disfrutando de lo que le gusta que es pasear con su familia en su propio medio de transporte y por esto y muchas cosas más es que destaca el amor del experto por lo que hace.
+## Biografia del experto
+
+El experto tiene aproximadamente 30 años de edad, con una experiencia en el mundo de compra y venta de carros de segunda de más de 5 años, su amor por el oficio es algo que nació desde niño, ya que siempre ha tenido un gusto por los carros y las motos, además, cabe aclarar que su negocio actualmente consiste en la compra y venta no solo de carros, sino también de camionetas (en especial toyotas) y de motos. El negocio empezó, cuando éste le dieron una moto en forma de pago de un dinero que le debían, pero como ya disponía de otra moto y no necesitaba dos, su salida era vender la moto que le habían acabado de dar, lo cual se le hizo fácil venderla y considero que fue un buen negocio, lo que lo llevó a pensar que no era una mala idea y con esto analizo que  realmente era un negocio rentable. Hasta el día de hoy su negocio consiste principalmente en comprar un vehículo, organizarlo, dejarlo en las mejores condiciones posibles y venderlo, con el fin de que el precio de este aumente de manera razonable. Realmente al experto le gusta dedicarse a esto, es algo que de verdad lo motiva, lo proyecta para su vida a largo plazo y de alguna manera u otra es gracias a esto que tiene una economía muy estable, dado que es el único oficio al que se ha dedicado a lo largo de su vida, además, él considera que tiene una alta experiencia en el tema, que es algo en lo que se desenvuelve bien y espera seguir mejorando, incluso, es un oficio del cual ha aprendido mucho, como examinar correctamente el estado de un vehículo, además, de que el mismo realiza  todo el proceso de traspaso de papeles del vehículo y demás aspecto que se deban tener en cuenta a la hora de realizar una compra o venta de un carro de segunda.
+
+Además, el experto constantemente cambia de vehículo y se debe al gusto que tiene por estos y por la sensación de descubrir cada vez mejores automóviles, además de que el experto tiene una gran familia conformada por una niña de aproximadamente 3 años de edad, su esposa y un bebé que está en camino y mediante esto destaca su gusto por pasear, salir con su familia incluyendo sus padres, de ahí nace el interés de tener un muy buen automóvil y que mejor que hacerlo cuando sabe tanto del negocio y puede darse el lujo de aprovechar grandes oportunidades y adquirir su propio medio de transporte, el cual esté en las mejores condiciones posibles para su gusto; incluso destaca que en estos momentos desea un carro más grande dado que su familia está aumentando y quiere seguir disfrutando de lo que le gusta que es pasear con su familia en su propio medio de transporte y por esto y muchas cosas más es que destaca el amor del experto por lo que hace.
 
 
 <br>
@@ -495,7 +508,6 @@ Al inicio se plantean preguntas para la construcción mental de la distribución
 
 -   ¿Cual es el precio del mazda 3 modelo 2012 y modelo 2016 más costoso que ha vendido?
 
-<br>
 
 Luego durante el proceso de elicitación se le pregunta más puntualmente:
 
@@ -527,9 +539,11 @@ Luego durante el proceso de elicitación se le pregunta más puntualmente:
 
 -   Se tuvieron en cuenta una serie de mejores prácticas a través de las cuales se puede obtener información tan rigurosa y científica como sea posible para minimizar los sesgos cognitivos que tienden a tener los expertos al hacer juicios probabilísticos las cuales son presentadas por O'Hagan (2019).
 
+-  Es más fácil para los expertos dar su opinión sobre un valor central que sobre cualquier otro valor en el rango de valores posibles de una variable. Este argumento se basa en el hecho de que a las personas les resulta más fácil describir los eventos que ocurren con más frecuencia que los que son raros. Por ello, se recomienda establecer como puntos de diseño valores cercanos a la media de la variable explicativa (fue tenida en cuenta para escoger los años a elicitar).
+
 <br>
 
-### Roles en el proceso de elicitación
+## Roles en el proceso de elicitación
 
 -   Para realizar este proceso hay que tener en cuenta los dos roles que se presentan que son de facilitador y experto:
 
@@ -561,19 +575,22 @@ Mediante esta elicitación ficticia se pretende preparar a los dos analistas par
 
 **Los aspectos a mejorar después de realizar la elicitación ficticia son:**
 
--   
+- Hay que entablar preguntas inicialmente que permitan un vinculo con el experto.   
 
--   
+- Dar claridad al experto del cambio de opinión que puede tener durante el proceso de elicitación y posterior a este.   
 
--   
+- Mejoramiento de la forma de dirigirse a los expertos, para darse a entender de una manera más acertada ya que tienen muy poco conocimiento estadístico, por lo tanto, es necesario el uso de terminología más generales.
+
+- No volver el proceso de elicitación tan mécanico o repetitivo para no cansar al experto, intentar el uso de diferentes terminologias que lleven a la misma idea.
+
+<br>
 
 ## Aplicación del Método de Elicitación
 
-*Momento de elicitar a nuestros expertos*
+*Momento de elicitar a nuestro experto*
 
--   Los resumenes que salen despúes de cada elicitación son sacados a partir de las notas que pudo obtener cada facilitador en todo el proceso.
 
-## Experto
+### Experto
 
 Este fue elicitado por ambos facilitadores:
 
@@ -581,7 +598,7 @@ Jennifer Salazar Galvis y Juan Esteban Sanchez Pulgarin
 
 A este experto se acudió hasta su casa, en el cual se le pidió la colaboración en el proceso de elicitación, muy amablemente, el experto ofreció gran parte de su tiempo para realizar bien este proceso.
 
-A el experto se le explico cómo debía realizar cada uno de los procesos de elicitación, se le dieron las pautas y toda la información necesaria para ayudar a guiarlo en su proceso de estimación, el facilitador lo estuvo acompañando aproximadamente 5 horas en las que el experto estuvo analizando con mucha calma todo, luego de eso, se comenzó a la realización del proceso de elicitación el cual fue grabado para que los facilitadores después pudieran hacer uso de este recurso y utilizarlo en su análisis
+A el experto se le explico cómo debía realizar cada uno de los procesos de elicitación, se le dieron las pautas y toda la información necesaria para ayudar a guiarlo en su proceso de estimación, los facilitadores lo estuvo acompañando aproximadamente 3 horas en las que el experto estuvo analizando con mucha calma todo, luego de eso, se comenzó a la realización del proceso de elicitación el cual fue grabado para que los facilitadores después pudieran hacer uso de este recurso y utilizarlo en su análisis.
 
 [Proceso de Elicitación a un Experto en compra y venta de carros de segunda](https://youtu.be/y0j3xFTAkjM)
 
@@ -599,7 +616,7 @@ A el experto se le explico cómo debía realizar cada uno de los procesos de eli
 
 ### Las plantillas de elicitación realizadas por este experto se presentan a continuación:
 
-**Elicitación para el mazda 3 sedan modelo 2012**
+**Elicitación para el mazda 3 sedán modelo 2012**
 
 <center>
 
@@ -607,11 +624,10 @@ A el experto se le explico cómo debía realizar cada uno de los procesos de eli
 
 </center>
 
-**Resumen de la elicitación**
 
 <br>
 
-**Elicitación para el mazda 3 sedan modelo 2016**
+**Elicitación para el mazda 3 sedán modelo 2016**
 
 <center>
 
@@ -619,11 +635,12 @@ A el experto se le explico cómo debía realizar cada uno de los procesos de eli
 
 </center>
 
-**Resumen de la elicitación**
-
 <br>
 
-## Cambios de opinión
+### Cambios de opinión
+
+Al experto durante el proceso de elicitación se le aclaro constantemente que en cualquier momento si cambia de opinión lo puede comunicar sin problema alguno, ya que esto hacia parte del proceso e incluso era una buena práctica, además de esto, dias posterior al proceso de elicitación hubo una comunicación con el experto preguntandole si preferia cambiar o se sentia inseguro de algunas de las estimaciones que nos habia dado durante el proceso de elicitación, pero este reiteraba que se sentia seguro de las estimaciones dadas, particularmente porque antes de realizar el proceso de elicitación le dimos un tiempo muy prudente para pensar y lo habia hecho de manera correcta desde su perspectiva.
+
 
 <br>
 
@@ -640,18 +657,17 @@ Datos_experto <- read_excel("Datos_experto.xlsx")
 ```{r,echo=FALSE}
 library(kableExtra)
 kable(Datos_experto, caption = "Datos de las elicitaciones sobre el sobre los precios de oferta de un mazda 3 modelo 2012 y 2016") %>%
-  kable_paper("striped", full_width = F) %>%
+  kable_paper() %>%
   scroll_box(width = "100%", height = "200px")
-
 ```
 
 <br>
 
 
-## Gráfico de las distribuciones dadas por el experto del precio del Mazda 3 para el modelo 2012 y 2016
+### Gráfico de las distribuciones dadas por el experto del precio de oferta del Mazda 3  modelo 2012 y 2016
 
 
-**distribución del precio Mazda 3 modelo 2012**
+**Distribución del precio Mazda 3 modelo 2012**
 
 ```{r, echo = FALSE, fig.align="center"}
 plot(Datos_experto$Precio, Datos_experto$modelo_2012, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, main="Distribución del precio Mazda 3 modelo 2012", lwd=2, col = "deepskyblue3")
@@ -680,7 +696,11 @@ kable(df_2012, row.names = F, caption = "Medidas de resumen de la distribucón d
 ```
 
 
-**distribución del precio Mazda 3 modelo 2016**
+* Según el experto el precio promedio del mazda 3 modelo 2012 es aproximadamente de 31 millones con una desviación estándar de aproximadamente 6.6 millones.
+
+<br>
+
+**Distribución del precio Mazda 3 modelo 2016**
 
 ```{r, echo=FALSE, fig.align="center"}
 plot(Datos_experto$Precio, Datos_experto$modelo_2016, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="firebrick", main="Distribución del precio Mazda 3 modelo 2016", lwd=2)
@@ -709,9 +729,11 @@ kable(df_2016, row.names = F, caption = "Medidas de resumen de la distribucón d
 ```
 
 
+* Según el experto el precio promedio del mazda 3 modelo 2016 es aproximadamente de 47 millones con una desviación estándar de aproximadamente 9 millones.
+
 <br>
 
-## Simulación inicial para la obtención de la distribución apriori
+## Simulación para la obtención de la distribución apriori
 
 Con la media y la varianza obtenidas anteriormente de las distribuciones de los precios de oferta de automoviles mazda 3 modelo 2012 y modelo 2016 se procede a extrar una muestra de tamaño **n equivalente** de una distribución normal con las medias y varianzas respectivas, esto se debe a que estamos bajo el supuesto de que los precios siguen una distribución normal, planteado en el modelo de regresión lineal simple.
 
@@ -806,7 +828,7 @@ kable(df_muestra1, row.names = F, caption = "Conjunto de datos para el ajuste de
 
 ### Ajuste del modelo de regresión lineal simple
 
-Este proceso se realiza con el interes de obtener de obtener los parametros del modelo de regresión lineal simple $\beta_0,~\beta_1,~ \sigma^2$
+Este proceso se realiza con el interés de obtener los parámetros del modelo de regresión lineal simple $\beta_0,~\beta_1,~ \sigma^2$
 
 
 
@@ -819,7 +841,7 @@ sigma_2 <- round(summary(modelo1)$sigma^2,2)
 ```
 
 
-**En donde se obtuvo el siguiente modelo estimado:**
+**En donde para los datos anteriores se obtuvo el siguiente modelo estimado:**
 
 $$\hat{Precio} = \hat{\beta}_0 + \hat{\beta}_1*\text{Año}$$
 
@@ -833,7 +855,7 @@ Por tanto los parametros obtenidos son:
 
 $$\begin{array}{| c | c | c |}
 \hline
-\beta_0&\beta_1&\sigma^2\\
+\hat{\beta}_0&\hat{\beta}_1&\hat{\sigma}^2\\
 \hline
 `r beta_0`&`r beta_1` & `r sigma_2`\\
 \hline
@@ -845,7 +867,7 @@ $$\begin{array}{| c | c | c |}
 
 **Todo el procedimiento anteriormente descrito se realiza 1000 veces, es decir:**
 
-Se realiza 1000 veces la extracción de las muestras de tamaño 15 mediante una distribución normal teniendo en cuenta media y varianza obtenidas de la distribuciones dada por el experto tanto para el modelo 2012 como para el modelo 2016, con ambas muestra se calcula un modelo de regresión lineal simple en donde obtenemos los parametros de los modelos por lo tanto, despues de realizar las 1000 simulaciones obtendremos 1000 estimaciones de cada uno de los parametros de un modelo de regresión lineal simple, los cuales son presentados a continuación:
+Se realiza 1000 veces la extracción de las muestras de tamaño 15 mediante una distribución normal teniendo en cuenta media y varianza obtenidas de la distribuciones dada por el experto tanto para el modelo 2012 como para el modelo 2016, con ambas muestra se calcula un modelo de regresión lineal simple en donde obtenemos los parámetros de los modelos por lo tanto, después de realizar las 1000 simulaciones obtendremos 1000 estimaciones de cada uno de los parámetros de un modelo de regresión lineal simple, los cuales son presentados a continuación:
 
 
 
@@ -880,39 +902,44 @@ row.names(df_parametros) <- NULL
 
 <br>
 
+
 ### Tabla de parámetros estimados dados por la distribución apriori
 
 ```{r, echo = FALSE}
-kable(df_parametros, col.names = c("β₀", "β₁", "σ²"), caption = "Parametros de modelo de regresión lineal simple obtenidos mediante simulación",row.names = TRUE) %>%
+kable(df_parametros, col.names = c("Beta 0", "Beta 1", "Varianza"), caption = "Parametros estimados del modelo de regresión lineal simple obtenidos mediante simulación",row.names = TRUE) %>%
   kable_paper() %>%
   row_spec(0, bold = T, color = "white", background = "#039794")  %>%
   scroll_box(width = "100%", height = "200px")
 ```
 
-**Gráfica de la distribución del beta_0**
+
+<br>
+
+**Gráfica de la distribución de beta 0**
 
 ```{r fig.align="center", echo=FALSE}
-hist(df_parametros$beta_0, xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
+hist(df_parametros$beta_0, xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribución de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
 lines(density(df_parametros$beta_0), lwd=1.5)
 grid()
 ```
 
+
 <br>
 
-**Gráfica de la distribución del beta_1**
+**Gráfica de la distribución de beta 1**
 
 ```{r fig.align="center", echo=FALSE}
-hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
+hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribución de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
 lines(density(df_parametros$beta_1), lwd=1.5)
 grid()
 ```
 
 <br>
 
-**Gráfica de la distribución del sigma**
+**Gráfica de la distribución de la Varianza**
 
 ```{r fig.align="center", echo=FALSE}
-hist(df_parametros$sigma_2, xlab='sigma_2', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+hist(df_parametros$sigma_2, xlab='Varianza', ylab='Densidad', main=expression(paste("Distribución de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
 lines(density(df_parametros$sigma_2), lwd=1.5)
 grid()
 ```
@@ -926,14 +953,13 @@ Se intenta aproximar la distribución apriori del experto a un modelo teórico:
 
 $$\xi(\beta_0, \beta_1, \sigma^2) \approx Normal \times Gamma~Inversa$$
 
-Al vector de parámetros $\beta=(\beta_0, \beta_1)$ se le ajusta una distribución normal bivariada por lo tanto se procede a calcular el vector de medias y la matriz de varianza y covarianzas(también su inversa) de los $\beta$, las cuales se usaran como parametros para la estimación de la distribución normal bivariada, por otro lado, a la varianza $\sigma^2$ se le ajusta una gamma inversa, mediante el vector de varianzas estimados, se calculan los parámetros de forma y escala asociados a la gamma inversa.
+Al vector de parámetros $\beta=(\beta_0, \beta_1)$ se le ajusta una distribución normal bivariada por lo tanto se procede a calcular el vector de medias y la matriz de varianza y covarianzas (también su inversa) de los $\beta$, las cuales se usarán como parámetros para la estimación de la distribución normal bivariada, por otro lado, a la varianza $\sigma^2$ se le ajusta una gamma inversa, mediante el vector de varianzas estimados, se calculan los parámetros de forma y escala asociados a la gamma inversa.
 
 
 **Media de los** $\beta$
 
 ```{r, echo=FALSE}
 media <- colMeans(df_parametros[,-3])
-media
 ```
 
 $$b0=\hat{\mu}_\beta=
@@ -944,7 +970,10 @@ $$b0=\hat{\mu}_\beta=
 
 La tasa de cambio del precio de oferta de un mazda 3 aumenta aproximadamente 4 millones por cada año que aumenta el modelo del carro.
 
-**Ejemplo:** Se espera que un carro que sea del año 2015 tenga un precio de aproximadamente 43 millones de pesos colombianos $Precio = -8104.095958+4.043284 \times 2015 = 43.121302 \approx 43~millones$
+**Ejemplo:** Se espera que un carro que sea del año 2015 tenga un precio de aproximadamente 43 millones de pesos colombianos: 
+
+
+$$Precio = -8104.095958+4.043284 \times 2015 = 43.121302 \approx 43~millones$$
 
 
 **Matriz de varianzas y covarianzas asociada a los** $\beta$
@@ -952,7 +981,7 @@ La tasa de cambio del precio de oferta de un mazda 3 aumenta aproximadamente 4 m
 
 ```{r, echo = FALSE}
 var <- var(df_parametros[,-3])
-var
+
 ```
 
 $$\hat{\Sigma}_\beta=
@@ -968,7 +997,6 @@ $$\hat{\Sigma}_\beta=
 
 ```{r, echo=FALSE}
 precision <- solve(var(df_parametros[,-3]))
-precision
 ```
 
 
@@ -978,12 +1006,9 @@ $$B0=\hat{\Sigma}^{-1}_\beta=
 `r precision[2,1]` & `r precision[2,2]`\\
 \end{bmatrix}$$
 
-
-
-
 <br>
 
-#### Estimación parametros Gamma Inversa MM como apriori para $\sigma^2$
+#### Estimación parametros Gamma Inversa como apriori para $\sigma^2$
 
 
 ```{r, echo=FALSE}
@@ -1013,6 +1038,9 @@ $$\xi(\beta, \sigma^2) = \xi(\beta|\sigma^2)\xi(\sigma^2)=N(\mu_{\beta}, \sigma^
 
 $$Apriori = f(\beta_0, \beta_1, \sigma^2)=Normal(\beta_0,\beta_1 |b0,B0)\times GammaInv(sigma^2|c0,d0)$$
 
+
+La cuál es una distribución que esta en tres dimensiones determinada por los tres parámetros que la conforman.
+
 <br>
 
 <hr>
@@ -1020,9 +1048,10 @@ $$Apriori = f(\beta_0, \beta_1, \sigma^2)=Normal(\beta_0,\beta_1 |b0,B0)\times G
 ## Extracción de la muestra
 
 
-Se realiza una busqueda en paginas de internet en donde se realizan ventas de carros de segunda (usados) en donde cada dueño coloca el respectivo precio de oferta que considera adecuado para su automovil, se extrae una muestra de precios del mazda 3 modelo 2012 y modelo 2016, cada una de las muestras son de tamaño 15 y son presentadas a continuación:
+Se realiza una búsqueda en páginas de internet en donde se realizan ventas de carros de segunda (usados) en donde cada dueño coloca el respectivo precio de oferta que considera adecuado para su automóvil, se extrae una muestra de precios del Mazda 3 modelo 2012 y modelo 2016, cada una de las muestras son de tamaño 15 y son presentadas a continuación:
 
 ```{r, echo = FALSE}
+library(readxl)
 muestra <- read_excel("muestra.xlsx")
 kable(muestra, row.names = F, caption = "Muestra extraida a partir de internet") %>%
   kable_paper() %>%
@@ -1054,9 +1083,14 @@ kable(promedio, row.names = F, col.names = c("Promedio modelo 2012", "Promedio m
   row_spec(0, bold = T, color = "white", background = "#039794")
 ```
 
+
+* El precio de oferta promedio de un mazda 3 modelo 2012 dado por la muestra es de 34 millones aproximadamente el cual comparado con el precio promedio dado por el experto, lo supera en 3 millones (el del experto era de aproximadamente 31 millones) los cuales no difieren mucho.
+
+* El precio de oferta promedio de un mazda 3 modelo 2016 dado por la muestra es de 52.5 millones aproximadamente el cual comparado con el precio promedio dado por el experto, lo supera en 5.5 millones (el del experto era de aproximadamente 47 millones) los cuales no difieren pero no tanto.
+
 <br>
 
-**Desviación de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
+**Desviación estándar de los precios de oferta obtenidos mediante las muestras extraídas a partir de internet tanto para el modelo 2012 y modelo 2016**
 
 
 ```{r, echo=FALSE}
@@ -1070,6 +1104,18 @@ kable(desviacion, row.names = F, col.names = c("Desviacion modelo 2012", "desvia
   row_spec(0, bold = T, color = "white", background = "#039794")
 ```
 
+
+* La desviación estándar de los precios de oferta para el año 2012 según la muestra es de aproximadamente 2.6 millones de pesos, la cual comparada con la desviación dada por el experto es menor por 4 millones (la del experto es de aproximadamente 6.6 millones) lo que indica que la muestra es más precisa o menos dispersa que las estimaciones dadas por el experto.
+
+* La desviación estándar de los precios de oferta para el año 2016 según la muestra es de aproximadamente 3.7 millones de pesos, la cual comparada con la desviación dada por el experto es menor por 5.3 millones (la del experto es de aproximadamente 9 millones) lo que indica que la muestra es más precisa o menos dispersa que las estimaciones dadas por el experto.
+
+* En general las estimaciones de la muestra son más precisa o menos dispersas que las dadas por el experto aunque se considera que ambas dispersiones no son grandes.
+
+* Hay mayor dispersión en los precios de oferta del modelo 2016 que del modelo 2012.
+
+
+
+<br>
 
 **Cuantiles de los precios de oferta obtenidos mediante las muestras extraidas a partir de internet tanto para el modelo 2012 y modelo 2016**
 
@@ -1086,11 +1132,25 @@ kable(cuantil, row.names = F, col.names = c("Cuantil modelo 2012", "Cuantil mode
 ```
 
 
+* Para los precios de oferta del modelo 2012 extraido mediante la muestra se tiene que:
+
+   - el precio minimo es de 29.9 millones
+   - el precio maximo es de 39.9 millones
+   - el 50% tiene un precio inferior a 33.8 millones
+   
+   
+   
+   
+* Para los precios de oferta del modelo 2016 extraido mediante la muestra se tiene que:
+
+   - el precio minimo es de 45.2 millones
+   - el precio maximo es de 57.9 millones
+   - el 50% tiene un precio inferior a 53.49 millones
+
+<br>
 
 
 **Distribución de los precios de oferta para el mazda 3 modelo 2012 y 2016 extraido a partir de la muestra de internet**
-
-
 
 ```{r, echo=FALSE, fig.align="center"}
 par(mfrow=c(1,2))
@@ -1103,6 +1163,19 @@ lines(density(precios_2016[,2]/1000000), lwd=1.5)
 grid()
 ```
 
+* La mayor frecuencia de precios de oferta modelo 2012 está entre los 32 y 34 millones.
+
+* La mayor frecuencia de precios de oferta modelo 2016 está entre los 52 y 54 millones.
+
+* Se observa una falta de precios de oferta entre los 30 y 32 millones para el modelo 2012.
+
+* Se observa una falta de precios de oferta entre los 46 y 48 millones para el modelo 2016.
+
+* La distribución de los precios de oferta para el modelo 2012 parecen ser más simétricos que los del modelo 2016.
+
+* Los precios de oferta de ambos modelos de Mazda 3 no se traslapan.
+
+<br>
 
 **Modelo de regresión asociado a la muestra extraida de internet:**
 
