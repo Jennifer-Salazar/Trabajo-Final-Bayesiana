@@ -1190,28 +1190,39 @@ legend('topleft', legend="Precio = -9222.394667 + 4.600667xAño", col="purple")
 grid()
 ```
 
+* Se observa una relación positiva entre el precio de oferta y el año, el cual era de esperarse
+
+* La tasa de cambio del precio de oferta respecto al año es de aproximadamente 4.6 millones, es decir, se espera que al aumentar el modelo del mazda 3 en un año, el precio promedio deberia aumentar 4.6 millones aproximadamente.  
 
 <br>
 
 
-## Uso de la distribución apriori y la muestra de internet para la contrucción del modelo de regresión lineal simple bayesiano
+## Construcción del modelo bayesiano 
 
+Este hace uso de la distribución apriori y de la muestra de internet para la contrucción del modelo de regresión lineal simple bayesiano o distribución posteriori.
+
+Para el ajuste, se hace uso de la función del R llamada **MCMCregress** del paquete **MCMCpack**
 
 ```{r}
 require(MCMCpack)
 modelo <- MCMCregress(Precio~Año, data=muestra, b0=media, B0=precision, c0=alfa, c1=beta)
-summary(modelo)
-
 ```
 
 
+**Modelo de regresión lineal bayesiano**
+
+
+$$Precio = -8088 + 4.035 * Año$$
+
 <br>
+
+A continuación se realiza el mismo análisis de los parámetros obtenidos mediante la distribución posterior:
 
 ### Tabla de parámetros estimados dados por la distribución posterior
 
 ```{r, echo = FALSE}
 require(kableExtra)
-kable(modelo, col.names = c("β₀", "β₁", "σ²"), caption = "Parametros de modelo de regresión lineal simple obtenidos via MCMC") %>%
+kable(modelo, col.names = c("Beta 0", "Beta 1", "Varianza"), caption = "Parametros de modelo de regresión lineal simple obtenidos via MCMC") %>%
   kable_paper() %>%
   row_spec(0, bold = T, color = "white", background = "#039794")  %>%
   scroll_box(width = "100%", height = "200px")
@@ -1220,7 +1231,7 @@ kable(modelo, col.names = c("β₀", "β₁", "σ²"), caption = "Parametros de 
 
 <br>
 
-**Gráfica de la distribución del beta_0**
+**Gráfica de la distribución de beta 0**
 
 ```{r fig.align="center", echo=FALSE}
 hist(modelo[,1], xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
@@ -1230,7 +1241,7 @@ grid()
 
 <br>
 
-**Gráfica de la distribución del beta_1**
+**Gráfica de la distribución de beta 1**
 
 ```{r fig.align="center", echo=FALSE}
 hist(modelo[,2], xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
@@ -1240,10 +1251,10 @@ grid()
 
 <br>
 
-**Gráfica de la distribución del sigma**
+**Gráfica de la distribución de la Varianza**
 
 ```{r fig.align="center", echo=FALSE}
-hist(modelo[,3], xlab='sigma_2', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+hist(modelo[,3], xlab='Varianza', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
 lines(density(modelo[,3]), lwd=1.5)
 grid()
 ```
@@ -1252,11 +1263,69 @@ grid()
 <br>
 
 
+### Gráficos comparativos de las distribuciones de los parámetros de la distribución apriori y la posteriori
+
+**Gráfica de la distribución de beta 0**
+
+```{r fig.align="center", echo=FALSE}
+plot(density(df_parametros$beta_0, add = TRUE), col = "cyan4", main="Gráfico comparativo de beta 0", xlab="Beta 0")
+lines(density(modelo[,1], add = TRUE), col = "blue")
+grid()
+```
+
+
+<br>
+
+**Gráfica de la distribución de beta 1**
+
+```{r fig.align="center", echo=FALSE}
+hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribución de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
+lines(density(df_parametros$beta_1), lwd=1.5)
+grid()
+```
+
+<br>
+
+
+
+**Gráfica de la distribución de beta 1**
+
+```{r fig.align="center", echo=FALSE}
+hist(modelo[,2], xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
+lines(density(modelo[,2]), lwd=1.5)
+grid()
+```
+
+<br>
+
+**Gráfica de la distribución de la Varianza**
+
+```{r fig.align="center", echo=FALSE}
+hist(df_parametros$sigma_2, xlab='Varianza', ylab='Densidad', main=expression(paste("Distribución de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+lines(density(df_parametros$sigma_2), lwd=1.5)
+grid()
+```
 
 
 
 
-## Parámetros de la distribución a posteriori
+
+
+
+<br>
+
+**Gráfica de la distribución de la Varianza**
+
+```{r fig.align="center", echo=FALSE}
+hist(modelo[,3], xlab='Varianza', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+lines(density(modelo[,3]), lwd=1.5)
+grid()
+```
+
+
+<hr>
+
+## Parámetros de la distribución posteriori
 
 **Media de los** $\beta$
 
@@ -1274,7 +1343,10 @@ $$b1=\hat{\mu}_\beta=
 
 La tasa de cambio del precio de oferta de un mazda 3 aumenta aproximadamente 4 millones por cada año que aumenta el modelo del carro.
 
-**Ejemplo:** Se espera que un carro que sea del año 2015 tenga un precio de aproximadamente 43 millones de pesos colombianos $Precio = -8088.042632+ 4.035309 \times 2015 = 43.105 \approx 43~millones$
+**Ejemplo:** Se espera que un carro que sea del año 2015 tenga un precio de aproximadamente 43 millones de pesos colombianos:
+
+
+$$Precio = -8088.042632+ 4.035309 \times 2015 = 43.105 \approx 43~millones$$
 
 <br>
 
@@ -1283,7 +1355,9 @@ La tasa de cambio del precio de oferta de un mazda 3 aumenta aproximadamente 4 m
 
 
 ```{r, echo=FALSE}
+var_pos <- var(modelo[,1:2])
 B1<-solve(var(modelo[,1:2]))
+
 ```
 
 
@@ -1298,7 +1372,7 @@ $$B1=\hat{\Sigma}^{-1}_\beta=
 
 <br>
 
-#### Estimación parametros Gamma Inversa MM como apriori para $\sigma^2$
+#### Estimación parametros Gamma Inversa como apriori para $\sigma^2$
 
 
 ```{r, echo=FALSE}
@@ -1311,32 +1385,33 @@ d1<-m.var1*(c1-1)
 
 Parámetro de forma
 
-$$c1=\hat{\alpha}_0 = `r c1`$$
+$$c1=\hat{\alpha}_1 = `r c1`$$
 
 Parámetro de escala
 
-$$d1=\hat{\gamma}_0 = `r d1`$$
+$$d1=\hat{\gamma}_1 = `r d1`$$
 
 
 <br>
 
-**Comparación de la distribución apriori con la posterior**
+**Comparación de los parámetros de la distribución apriori con la distribución posteriori**
 
 ```{r, echo=FALSE}
-parametros <- data.frame(beta_0 = c(media[1], b1[1]), beta_1=c(media[2], b1[2]), media_var = c(m, m.var1), varianza_var=c(v, v.var1), alfa = c(alfa, c1), beta=c(beta, d1), row.names = c("Apriori", "Posteriori"))
-kable(parametros, col.names = c("β₀", "β₁", "E(varianza)",  "Var(varianza)", "c", "d"), caption = "Parametros de modelo de regresión lineal Mediante la distribución apriori y la distribución posteriori", row.names = T) %>%
+parametros <- data.frame(beta_0 = c(media[1], b1[1]), beta_1=c(media[2], b1[2]),  var_b0 = c(var[1,1], var_pos[1,1]), var_b1 = c(var[2,2], var_pos[2,2]), cov_b0_b1 = c(var[1,2], var_pos[1,2]),alfa = c(alfa, c1), beta=c(beta, d1), row.names = c("Apriori", "Posteriori"))
+kable(parametros, col.names = c("β₀", "β₁", "Var(β₀)", "Var(β₁)","Cov(β₀, β₁)","c (forma)", "d (escala)"), caption = "Parametros del modelo de regresión lineal Mediante la distribución apriori y la distribución posteriori", row.names = T) %>%
   kable_paper() %>%
   row_spec(0, bold = T, color = "white", background = "#039794")  %>%
   scroll_box(width = "100%", height = "200px")
 ```
 
 
+<br>
 
-Conclusión: En base al resultado del promedio del $\beta_0$ y $\beta_1$ que es la tasa de cambio del precio de oferta de los mazda 3 dado el año  hallado a partir de la distribución dada por el experto (distribución apriori) y a partir de la obtenida mediante la muestra y la distribución apriori (distribución posteriori) se ve la gran similaridad entre estas, lo que indica que la estimación de los precios de oferta dados por el experto son demasiado similares a los extraidas en la muestra de internet, lo que indica que el conocimiento del experto da confiabilidad; realmente el cambio se ve en es la varianza que se estima en los modelos de regresión mediante la información dada por el experto y la extraida de internet, lo que indica que la dada por el experto es información más precisa (varianza más pequeña) que la extraida de internet.
+Todos los parámetros presentados en la tabla anterior fueron los calculados para la aproximación de la distribución apriori y la distribución posterior, la idea es comparar la gran similaridad que hay entre estos, indicando que la información del experto es acertada respecto a la realidad de los precios de oferta del mazda 3 sedán.
 
+Conclusión: En base al resultado del promedio del $\beta_0$ y en especial del $\beta_1$ que es la tasa de cambio del precio de oferta de los mazda 3 dado el año  hallado a partir de la distribución dada por el experto (distribución apriori) y a partir de la obtenida mediante la muestra y la distribución apriori (distribución posteriori) se ve la gran similaridad entre estas, en ambas la tasa de cambio del precio de oferta es de aproximadamente 4 millones, lo que denota que la estimación de los precios de oferta dados por el experto son demasiado similares a los extraidas en la muestra de internet, lo que indica que el conocimiento del experto da confiabilidad; realmente el cambio se ve en es la varianza que se estima en los modelos de regresión mediante la información dada por el experto y la extraida de internet.
 
-<hr>
-
+<br>
 
 **Gráfico de la distribución conjunta entre ** $\beta_0$ **y** $\beta_1$
 
