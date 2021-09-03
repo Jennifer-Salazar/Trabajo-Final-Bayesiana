@@ -231,7 +231,7 @@ Con esta generación se mejoró el nivel de calidad y refinamiento, además de o
 
 
 
-### Constructor y distribuidores
+### Constructores y distribuidores
 
 #### Constructores
 
@@ -981,7 +981,6 @@ $$Precio = -8104.095958+4.043284 \times 2015 = 43.121302 \approx 43~millones$$
 
 ```{r, echo = FALSE}
 var <- var(df_parametros[,-3])
-
 ```
 
 $$\hat{\Sigma}_\beta=
@@ -1016,7 +1015,6 @@ m<-mean(df_parametros[,3])
 v<-var(df_parametros[,3])
 alfa<-m^2/v+2
 beta<-m*(m^2/v+1)
-
 ```
 
 Parámetro de forma
@@ -1263,65 +1261,28 @@ grid()
 <br>
 
 
-### Gráficos comparativos de las distribuciones de los parámetros de la distribución apriori y la posteriori
+#### Gráficos comparativos de las distribuciones de los parámetros del modelo de regresión lineal simple dado por el experto y el obtenido mediante el análisis bayesiano
 
-**Gráfica de la distribución de beta 0**
+**Gráfica de la distribución de los** $\beta$
 
 ```{r fig.align="center", echo=FALSE}
-plot(density(df_parametros$beta_0, add = TRUE), col = "cyan4", main="Gráfico comparativo de beta 0", xlab="Beta 0")
-lines(density(modelo[,1], add = TRUE), col = "blue")
+
+par(mfrow=c(1,2))
+plot(density(df_parametros$beta_0, add = TRUE), col = "cyan4", main="Gráfico comparativo de beta 0", xlab="Beta 0", lwd=2)
+lines(density(modelo[,1], add = TRUE), col = "blue",lwd=2)
+legend("topright", legend=c("Apriori", "posteriori"),col=c("cyan4", "blue"),lwd=2, bty = "n", cex=0.8)
+grid()
+
+plot(density(df_parametros$beta_1, add = TRUE), col = "cyan4", main="Gráfico comparativo de beta 1", xlab="Beta 1", lwd=2)
+lines(density(modelo[,2], add = TRUE), col = "blue", lwd=2)
+legend("topright", legend=c("Apriori", "posteriori"),col=c("cyan4", "blue"),lwd=2, bty = "n", cex=0.8)
 grid()
 ```
 
+
+* Mediante los gráficos se puede notar la gran similaridad entre las estimaciones de los parámetros de los modelos de regresión lineal simple, dado por el experto como distribución apriori y el cálculado como distribución posteriori.
 
 <br>
-
-**Gráfica de la distribución de beta 1**
-
-```{r fig.align="center", echo=FALSE}
-hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribución de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
-lines(density(df_parametros$beta_1), lwd=1.5)
-grid()
-```
-
-<br>
-
-
-
-**Gráfica de la distribución de beta 1**
-
-```{r fig.align="center", echo=FALSE}
-hist(modelo[,2], xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
-lines(density(modelo[,2]), lwd=1.5)
-grid()
-```
-
-<br>
-
-**Gráfica de la distribución de la Varianza**
-
-```{r fig.align="center", echo=FALSE}
-hist(df_parametros$sigma_2, xlab='Varianza', ylab='Densidad', main=expression(paste("Distribución de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
-lines(density(df_parametros$sigma_2), lwd=1.5)
-grid()
-```
-
-
-
-
-
-
-
-<br>
-
-**Gráfica de la distribución de la Varianza**
-
-```{r fig.align="center", echo=FALSE}
-hist(modelo[,3], xlab='Varianza', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
-lines(density(modelo[,3]), lwd=1.5)
-grid()
-```
-
 
 <hr>
 
@@ -1400,8 +1361,7 @@ $$d1=\hat{\gamma}_1 = `r d1`$$
 parametros <- data.frame(beta_0 = c(media[1], b1[1]), beta_1=c(media[2], b1[2]),  var_b0 = c(var[1,1], var_pos[1,1]), var_b1 = c(var[2,2], var_pos[2,2]), cov_b0_b1 = c(var[1,2], var_pos[1,2]),alfa = c(alfa, c1), beta=c(beta, d1), row.names = c("Apriori", "Posteriori"))
 kable(parametros, col.names = c("β₀", "β₁", "Var(β₀)", "Var(β₁)","Cov(β₀, β₁)","c (forma)", "d (escala)"), caption = "Parametros del modelo de regresión lineal Mediante la distribución apriori y la distribución posteriori", row.names = T) %>%
   kable_paper() %>%
-  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
-  scroll_box(width = "100%", height = "200px")
+  row_spec(0, bold = T, color = "white", background = "#039794")  
 ```
 
 
@@ -1409,7 +1369,7 @@ kable(parametros, col.names = c("β₀", "β₁", "Var(β₀)", "Var(β₁)","Co
 
 Todos los parámetros presentados en la tabla anterior fueron los calculados para la aproximación de la distribución apriori y la distribución posterior, la idea es comparar la gran similaridad que hay entre estos, indicando que la información del experto es acertada respecto a la realidad de los precios de oferta del mazda 3 sedán.
 
-Conclusión: En base al resultado del promedio del $\beta_0$ y en especial del $\beta_1$ que es la tasa de cambio del precio de oferta de los mazda 3 dado el año  hallado a partir de la distribución dada por el experto (distribución apriori) y a partir de la obtenida mediante la muestra y la distribución apriori (distribución posteriori) se ve la gran similaridad entre estas, en ambas la tasa de cambio del precio de oferta es de aproximadamente 4 millones, lo que denota que la estimación de los precios de oferta dados por el experto son demasiado similares a los extraidas en la muestra de internet, lo que indica que el conocimiento del experto da confiabilidad; realmente el cambio se ve en es la varianza que se estima en los modelos de regresión mediante la información dada por el experto y la extraida de internet.
+Conclusión: En base al resultado del promedio del $\beta_0$ y en especial del $\beta_1$ que es la tasa de cambio del precio de oferta de los mazda 3 dado el año  hallado a partir de la distribución dada por el experto (distribución apriori) y a partir de la obtenida mediante la muestra y la distribución apriori (distribución posteriori) se ve la gran similaridad entre estas, en ambas la tasa de cambio del precio de oferta es de aproximadamente 4 millones, lo que denota que la estimación de los precios de oferta dados por el experto son demasiado similares a los extraidas en la muestra de internet, lo que indica que el conocimiento del experto da confiabilidad; realmente el cambio se ve en es la varianza que se estima en los modelos de regresión mediante la información dada por el experto y la extraida de internet y esto se nota en las diferencias de los parámetros de escala y forma.
 
 <br>
 
@@ -1432,14 +1392,28 @@ Densidad de tipo no parámetrica: como es de esperarse, se parece a los contorno
 
 ## Conclusiones y Recomendaciones
 
+- Se logra obtener una buena estimacicón de un modelo del precio de oferta de un mazda 3 a tráves de los años y con todo el análisis se destaca que se puede construir un buen modelo desde el conocimiento de un experto en el tema y la muestra nos permitio corroborar esto.
+
+- Los modelos bayesianos son de gran utilidad ya que nos permiten valorar tanto el conocimiento de un experto en el tema como la muestra y en el caso que estos difieran, crear un balance entre estos.
+
+-  El proceso de elicitación es una tarea la cual requiere una buena comunicación con el experto, ya que este se debe sentir cómodo con las preguntas que se le realizan, debe comprender lo importante que es para la investigación y que de verdad exprese su conocimiento o perspectiva frente al tema que se está estudiando.
+
+- Es de suma importancia después de un tiempo prudente preguntarle al experto si sigue teniendo la misma perspectiva o la ha cambiado y hacer un registro de ello, de tal manera que las estimaciones de verdad reflejen el pensamiento y conocimiento del experto.
+
+- Es muy recomendable realizar el proceso de elicitación ficticia ya que este permite tener una preparación de cuál es la comunicación más acertada que se debe tener con el experto.
+
+- Algo muy positivo a resaltar de este estudio es que el experto genero una gran seguridad en sus estimaciones, realmente notamos su gran conocimiento en el tema, por lo tanto se concluye que el proceso de elicitación fue exitoso.
+
+-  Una de las dificultades es buscar al experto, ya que este problema bajo estudio requeria un experto en la compra y venta de carros de segunda y este oficio particularmente no es común encontrar personas que lo ejerzan, además de que es un poco incomodo pedir tanta disponibilidad de tiempo por parte del experto.
+
+- El proceso de elicitación es una muy buena herramienta para sacar estimaciones de problemas de estudio que mediante otras técnicas generan gran dificultad y además de ello son costosos, porque el proceso de elicitación no requiere muchos datos y además valora a expertos en el tema, lo cual debería ser más acertado.
+
+- Una técnica utilizada en este estudio y que es de suma utilidad son las simulaciones ya que estos nos permitieron obtener unas buenas distribuciones dando peso respecto a la experiencia o conocimiento que el experto tenia frente al tema.
+
 <br>
 <hr>
 
-# Referencias
-
-
-* C. (2020, 10 julio). ¿Cuánto ganan los propietarios de la barbería mensualmente / anualmente? ExoNegocios. https://exonegocios.com/cuanto-ganan-los-propietarios-de-la-barberia-mensualmente-anualmente/
-
+## Referencias
 
 
 * Flórez Rivera, A. (2014). ELICITACIÓN DE UNA DISTRIBUCIÓN SUBJETIVA DEL VECTOR DE PARÁMETROS PI DE LA DISTRIBUCIÓN MULTINOMIAL (Magister en Estadística). Universidad Nacional de Colombia.
@@ -1465,10 +1439,518 @@ Densidad de tipo no parámetrica: como es de esperarse, se parece a los contorno
 ## Códigos de R utilizados
 
 
+**Códigos para hacer las plantillas de elicitación**
+
+* Plantilla 1:
+
+Año 2012
+
+```{r, fig.align="center"}
+library(ggplot2)
+x <- seq(0, 100000, by=1000)
+y <- seq(0, 100, by=1)
+datos <- data.frame(x,y)
+par(pty="s")
+ggplot(datos, aes(x,y))+ 
+  scale_y_continuous(breaks=c(0,5,15,20,35,50,60,75,90,95,100), labels = c("Totalmente imposible", "Me parece muy improbable", "Me parece un poco improbable", "No me genera seguridad", "Es más bien algo incierto", "Ni acuerdo ni en contra(50-50)", "Pudiera ser, pero...", "Me parece algo posible", "Me parece demasiado viable", "Estoy casi seguro", "Absolutamente seguro"), name=" ") +
+  scale_x_continuous(breaks=seq(0, 150, 5), name=" ")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  geom_vline(xintercept=seq(0, 150, 5), color="gray")+
+  geom_hline(yintercept=c(0,5,15,20,35,50,60,75,90,95,100), color="gray")+
+  ggtitle ("Precio de un mazda 3 modelo 2012 en millones de pesos")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+* Plantilla 2:
+
+Año 2016
+
+```{r, fig.align="center"}
+library(ggplot2)
+x <- seq(0, 100000, by=1000)
+y <- seq(0, 100, by=1)
+datos <- data.frame(x,y)
+par(pty="s")
+ggplot(datos, aes(x,y))+ 
+  scale_y_continuous(breaks=c(0,5,15,20,35,50,60,75,90,95,100), labels = c("Totalmente imposible", "Me parece muy improbable", "Me parece un poco improbable", "No me genera seguridad", "Es más bien algo incierto", "Ni acuerdo ni en contra(50-50)", "Pudiera ser, pero...", "Me parece algo posible", "Me parece demasiado viable", "Estoy casi seguro", "Absolutamente seguro"), name=" ") +
+  scale_x_continuous(breaks=seq(0, 150, 5), name=" ")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  geom_vline(xintercept=seq(0, 150, 5), color="gray")+
+  geom_hline(yintercept=c(0,5,15,20,35,50,60,75,90,95,100), color="gray")+
+  ggtitle ("Precio de un mazda 3 modelo 2016 en millones de pesos")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+Lectura del conjunto de datos de las estimaciones del experto:
+
+```{r}
+# Lectura de la base de datos
+library(readxl)
+Datos_experto <- read_excel("Datos_experto.xlsx")
+```
+
+
+<br>
+
+Codigo que imprime el conjunto de datos
+
+```{r}
+library(kableExtra)
+kable(Datos_experto, caption = "Datos de las elicitaciones sobre el sobre los precios de oferta de un mazda 3 modelo 2012 y 2016") %>%
+  kable_paper() %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+<br>
+
+Gráfico de la distribución del precio Mazda 3 modelo 2012 dado por el experto
+
+```{r, fig.align="center"}
+plot(Datos_experto$Precio, Datos_experto$modelo_2012, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, main="Distribución del precio Mazda 3 modelo 2012", lwd=2, col = "deepskyblue3")
+grid()
+```
+
+
+Calculo del promedio y varianza de la distribución del precio Mazda 3 modelo 2012 dado por el experto
+
+
+```{r}
+media_2012 <- sum(Datos_experto$Precio*Datos_experto$modelo_2012)/sum(Datos_experto$modelo_2012)
+
+var_2012 <- (sum(((Datos_experto$Precio-media_2012)^2)*Datos_experto$modelo_2012))/sum(Datos_experto$modelo_2012)
+
+sd_2012 <- sqrt(var_2012)
+
+df_2012 <- data.frame(media = media_2012, varianza = var_2012, desviacion = sd_2012)
+```
+
+
+Codigo que presenta la tabla con la media, la varianza y desviación (2012):
+
+```{r}
+kable(df_2012, row.names = F, caption = "Medidas de resumen de la distribucón del precio de oferta mazda 3 modelo 2012") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
 
 
 
+Gráfico de la distribución del precio Mazda 3 modelo 2016 dado por el experto
+
+```{r, fig.align="center"}
+plot(Datos_experto$Precio, Datos_experto$modelo_2016, type='l',ylab='Densidad',xlab='Precio del Mazda 3 en millones de pesos', pch=19, col="firebrick", main="Distribución del precio Mazda 3 modelo 2016", lwd=2)
+grid()
+```
 
 
+<br>
+
+
+Calculo del promedio y varianza de la distribución del precio Mazda 3 modelo 2016 dado por el experto
+
+
+
+```{r}
+media_2016 <- sum(Datos_experto$Precio*Datos_experto$modelo_2016)/sum(Datos_experto$modelo_2016)
+
+var_2016 <- (sum(((Datos_experto$Precio-media_2016)^2)*Datos_experto$modelo_2016))/sum(Datos_experto$modelo_2016)
+
+sd_2016 <- sqrt(var_2016)
+
+df_2016 <- data.frame(media = media_2016, varianza = var_2016, desviacion = sd_2016)
+```
+
+
+Codigo que presenta la tabla con la media, la varianza y desviación (2016):
+
+```{r}
+kable(df_2016, row.names = F, caption = "Medidas de resumen de la distribucón del precio de oferta mazda 3 modelo 2016") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+Simulación mediante la distribución normal de la muestra de tamaño 15 de la información dada por el experto para el año 2012
+
+
+```{r}
+set.seed(2021)
+muestra_2012 <- rnorm(n=15,mean = media_2012, sd=sd_2012)
+```
+
+
+Tabla de la muestra para el modelo 2012:
+
+
+```{r}
+df_muestra_2012 <- data.frame(muestra_2012)
+
+kable(df_muestra_2012, row.names = F, caption = "muestra del precio de oferta para un mazda 3 modelo 2012") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+
+Simulación mediante la distribución normal de la muestra de tamaño 15 de la información dada por el experto para el año 2016
+
+```{r}
+set.seed(2021)
+muestra_2016 <- rnorm(n=15,mean = media_2016, sd=sd_2016)
+```
+
+
+Tabla de la muestra para el modelo 2016:
+
+```{r}
+df_muestra_2016 <- data.frame(muestra_2016)
+
+kable(df_muestra_2016, row.names = F, caption = "muestra del precio de oferta para un mazda 3 modelo 2016") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+
+Conjunto de datos utilizado para el ajuste del modelo de regresión lineal simple
+
+```{r}
+df_muestra1 <- data.frame(Precio=c(muestra_2012, muestra_2016), Año = c(rep(2012, 15), rep(2016, 15)))
+
+kable(df_muestra1, row.names = F, caption = "Conjunto de datos para el ajuste del modelo de regresión lineal simple") %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+
+```
+
+<br>
+
+Ajuste del modelo y extracción de los parámetros de dicho modelo
+
+```{r}
+modelo1 <- lm(Precio~Año, data=df_muestra1)
+beta_0 <- round(coef(modelo1)[1],2)
+beta_1 <- round(coef(modelo1)[2],2)
+sigma_2 <- round(summary(modelo1)$sigma^2,2)
+
+```
+
+
+Simulación de 1000 muestras para el ajuste de 1000 modelos de regresión lineal simple e inclusión de los parámetros de estos a un data.frame
+
+```{r}
+
+df_parametros <- data.frame(beta_0 = beta_0 , beta_1 = beta_1, sigma_2 = sigma_2)
+
+for(i in 2:1000){
+  set.seed(i)
+  muestra_2012 <- rnorm(n=15,mean = media_2012, sd=sd_2012)
+  muestra_2016 <- rnorm(n=15,mean = media_2016, sd=sd_2016)
+  
+  
+  df_muestras <- data.frame(Precio=c(muestra_2012, muestra_2016), Año = c(rep(2012, 15), rep(2016, 15)))
+  
+  modelo <- lm(Precio~Año, data=df_muestras)
+  beta_0 <- coef(modelo)[1]
+  beta_1 <- coef(modelo)[2]
+  sigma_2 <- summary(modelo)$sigma^2
+  
+  parametros <- c(beta_0, beta_1, sigma_2)
+  
+  df_parametros <- rbind(df_parametros, parametros)
+}
+
+
+row.names(df_parametros) <- NULL
+
+```
+
+
+Tabla que muestra los parametros de los 1000 modelos simulados
+
+```{r}
+kable(df_parametros, col.names = c("Beta 0", "Beta 1", "Varianza"), caption = "Parametros estimados del modelo de regresión lineal simple obtenidos mediante simulación",row.names = TRUE) %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+
+<br>
+
+
+Gráfica de la distribución de beta 0 (Apriori)
+
+```{r fig.align="center"}
+hist(df_parametros$beta_0, xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribución de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
+lines(density(df_parametros$beta_0), lwd=1.5)
+grid()
+```
+
+
+<br>
+
+Gráfica de la distribución de beta 1 (Apriori)
+
+```{r fig.align="center"}
+hist(df_parametros$beta_1, xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribución de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
+lines(density(df_parametros$beta_1), lwd=1.5)
+grid()
+```
+
+<br>
+
+Gráfica de la distribución de la Varianza (Apriori)
+
+```{r fig.align="center"}
+hist(df_parametros$sigma_2, xlab='Varianza', ylab='Densidad', main=expression(paste("Distribución de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+lines(density(df_parametros$sigma_2), lwd=1.5)
+grid()
+```
+
+
+Calculo del vector de medias de los betas (Apriori)
+
+```{r}
+media <- colMeans(df_parametros[,-3])
+```
+
+
+Calculo de la matriz de varianza y covarianzas de los betas (Apriori)
+
+```{r}
+var <- var(df_parametros[,-3])
+```
+
+Calculo de la matriz de varianzas y covarianzas inversa o matriz de presición de los betas (Apriori)
+
+```{r}
+precision <- solve(var(df_parametros[,-3]))
+```
+
+Calculo de los parámetros de la gamma inversa (Apriori)
+
+```{r}
+m<-mean(df_parametros[,3])
+v<-var(df_parametros[,3])
+alfa<-m^2/v+2
+beta<-m*(m^2/v+1)
+```
+
+
+Lectura del conjunto de datos de la muestra extraida de internet
+
+```{r}
+library(readxl)
+muestra <- read_excel("muestra.xlsx")
+kable(muestra, row.names = F, caption = "Muestra extraida a partir de internet") %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+<br>
+
+Separación de la muestra del 2012 y 2016 para el análisis descriptivo
+
+```{r}
+precios_2012 <- data.frame(muestra[muestra$Año==2012,])
+precios_2016 <- data.frame(muestra[muestra$Año==2016,])
+```
+
+
+Promedios de las muestras extraidas de internet
+
+```{r}
+promedio_2012 <- mean(precios_2012[,2])
+promedio_2016 <- mean(precios_2016[,2])
+
+promedio <- data.frame(promedio_2012/1000000, promedio_2016/1000000)
+  
+kable(promedio, row.names = F, col.names = c("Promedio modelo 2012", "Promedio modelo 2016"),caption = "Promedio en millones de pesos de los precios de oferta extraidos de la muestra de internet") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+Desviación de las muestras extraidas de internet
+
+```{r}
+desviacion_2012 <- sd(precios_2012[,2])
+desviacion_2016 <- sd(precios_2016[,2])
+
+desviacion <- data.frame(desviacion_2012/1000000, desviacion_2016/1000000)
+  
+kable(desviacion, row.names = F, col.names = c("Desviacion modelo 2012", "desviacion modelo 2016"),caption = "Desviacion en millones de pesos de los precios de oferta extraidos de la muestra de internet") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+Cuantiles de las muestras extraidas de internet
+
+```{r}
+cuantil_2012 <- summary(precios_2012)[,2]
+cuantil_2016 <- summary(precios_2016)[,2]
+
+cuantil <- data.frame(cuantil_2012, cuantil_2016)
+  
+kable(cuantil, row.names = F, col.names = c("Cuantil modelo 2012", "Cuantil modelo 2016"),caption = "Cuantil de los precios de oferta extraidos de la muestra de internet") %>%
+  kable_paper("striped", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+
+Densidad de las muestras extraidas de internet
+
+```{r, fig.align="center"}
+par(mfrow=c(1,2))
+hist(precios_2012[,2]/1000000, xlab='Precios', ylab='Densidad', main="Distribución de los precios de oferta en millones \n de pesos modelo 2012 (muestra)", col="cyan3", freq = FALSE, cex.main=0.7)
+lines(density(precios_2012[,2]/1000000), lwd=1.5)
+grid()
+
+hist(precios_2016[,2]/1000000, xlab='Precios', ylab='Densidad', main="Distribución de los precios de oferta en millones \n de pesos modelo 2016 (muestra)", col="cyan3", freq = FALSE, cex.main=0.7)
+lines(density(precios_2016[,2]/1000000), lwd=1.5)
+grid()
+```
+
+Ajuste y gráfica del modelo de regresión lineal simple de la muestra extraida de internet
+
+```{r, fig.align="center"}
+modelo_muestra <- lm(Precio~Año, data=muestra)
+
+library(latex2exp)
+plot(muestra$Año, muestra$Precio/1000000, xlab="Año", ylab="Precio en millones de pesos", pch=19, col="cyan4", main="Modelo de regresión lineal asociado a la muestra de internet")
+abline(coef(modelo_muestra)/1000000, col="purple")
+legend('topleft', legend="Precio = -9222.394667 + 4.600667xAño", col="purple")
+grid()
+```
+
+
+Ajuste del modelo bayesiano (distribución posteriori) el cual tiene en cuenta la muestra y la información de la distribución apriori
+
+```{r}
+require(MCMCpack)
+modelo <- MCMCregress(Precio~Año, data=muestra, b0=media, B0=precision, c0=alfa, c1=beta)
+summary(modelo)
+```
+
+
+Tabla de parámetros estimados dados por la distribución posterior
+
+```{r}
+require(kableExtra)
+kable(modelo, col.names = c("Beta 0", "Beta 1", "Varianza"), caption = "Parametros de modelo de regresión lineal simple obtenidos via MCMC") %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")  %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+
+<br>
+
+Gráfica de la distribución de beta 0 (Posteriori)
+
+```{r fig.align="center"}
+hist(modelo[,1], xlab='Beta 0', ylab='Densidad', main = expression(paste("Distribucion de ", beta[0], " estimado")), col="cyan3", freq = FALSE, ylim = c(0,0.0003))
+lines(density(modelo[,1]), lwd=1.5)
+grid()
+```
+
+<br>
+
+Gráfica de la distribución de beta 1 (Posteriori)
+
+```{r fig.align="center"}
+hist(modelo[,2], xlab='Beta 1', ylab='Densidad', main=expression(paste("Distribucion de ", beta[1], " estimado")), col="cyan3", freq = FALSE, ylim = c(0, 0.60))
+lines(density(modelo[,2]), lwd=1.5)
+grid()
+```
+
+<br>
+
+Gráfica de la distribución de la Varianza (Posteriori)
+
+```{r fig.align="center"}
+hist(modelo[,3], xlab='Varianza', ylab='Densidad', main=expression(paste("Distribucion de ", sigma^2, " estimado")), col="cyan3", freq = FALSE)
+lines(density(modelo[,3]), lwd=1.5)
+grid()
+```
+
+
+
+Gráfico comparativo de los parametros de las distribuciones apriori y posteriori
+
+```{r fig.align="center"}
+
+par(mfrow=c(1,2))
+plot(density(df_parametros$beta_0, add = TRUE), col = "cyan4", main="Gráfico comparativo de beta 0", xlab="Beta 0", lwd=2)
+lines(density(modelo[,1], add = TRUE), col = "blue",lwd=2)
+legend("topright", legend=c("Apriori", "posteriori"),col=c("cyan4", "blue"),lwd=2, bty = "n", cex=0.8)
+grid()
+
+plot(density(df_parametros$beta_1, add = TRUE), col = "cyan4", main="Gráfico comparativo de beta 1", xlab="Beta 1", lwd=2)
+lines(density(modelo[,2], add = TRUE), col = "blue", lwd=2)
+legend("topright", legend=c("Apriori", "posteriori"),col=c("cyan4", "blue"),lwd=2, bty = "n", cex=0.8)
+grid()
+```
+
+
+
+Vector de medias de los betas (Posteriori)
+
+
+```{r}
+b1<-colMeans(modelo[,1:2])
+```
+
+
+Matriz de varianzas y covarianza e inversa de los betas (Posteriori)
+
+```{r}
+var_pos <- var(modelo[,1:2])
+B1<-solve(var(modelo[,1:2]))
+
+```
+
+
+Calculo de los parámetros de la gamma inversa (Posteriori)
+
+```{r}
+m.var1<-mean(modelo[,3])
+v.var1<-var(modelo[,3])
+
+c1<-m.var1^2/v.var1+2
+d1<-m.var1*(c1-1)
+```
+
+
+
+Comparación de los parámetros de la distribución apriori con la distribución posteriori
+
+```{r}
+parametros <- data.frame(beta_0 = c(media[1], b1[1]), beta_1=c(media[2], b1[2]),  var_b0 = c(var[1,1], var_pos[1,1]), var_b1 = c(var[2,2], var_pos[2,2]), cov_b0_b1 = c(var[1,2], var_pos[1,2]),alfa = c(alfa, c1), beta=c(beta, d1), row.names = c("Apriori", "Posteriori"))
+kable(parametros, col.names = c("β₀", "β₁", "Var(β₀)", "Var(β₁)","Cov(β₀, β₁)","c (forma)", "d (escala)"), caption = "Parametros del modelo de regresión lineal Mediante la distribución apriori y la distribución posteriori", row.names = T) %>%
+  kable_paper() %>%
+  row_spec(0, bold = T, color = "white", background = "#039794")
+```
+
+<br>
+
+Gráfico de la distribución conjunta entre los betas
+
+```{r}
+library(ash)
+ab <- matrix( c(0,-13000,8,-3000), 2, 2)
+nbin <- c( 20, 20) # 400 bins
+bins <- bin2(modelo[,c(2,1)], ab, nbin)
+m <- c(5,5)
+f <- ash2(bins,m)
+image(f$x,f$y,f$z, xlab="beta 1", ylab="beta 0")
+contour(f$x,f$y,f$z,add=TRUE)
+```
 
 
